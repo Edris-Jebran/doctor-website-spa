@@ -169,7 +169,7 @@ export const initializeAnalytics = () => {
   trackDeviceType(deviceType);
   
   // Track screen resolution
-  trackScreenResolution(screen.width, screen.height);
+  trackScreenResolution(window.screen.width, window.screen.height);
   
   // Track page load performance
   trackPageLoadPerformance();
