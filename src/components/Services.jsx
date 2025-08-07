@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
+import { trackAppointmentClick, trackPhoneCall } from '../utils/analytics';
 
 const Services = ({ services }) => {
   const { currentLanguage } = useLanguage();
@@ -81,12 +82,14 @@ const Services = ({ services }) => {
               <a 
                 href="#contact" 
                 className="bg-white text-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm sm:text-base"
+                onClick={() => trackAppointmentClick('emergency_section')}
               >
                 {getContactEmergency()}
               </a>
               <a 
                 href="tel:+93 78 915 8627" 
                 className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm sm:text-base"
+                onClick={trackPhoneCall}
               >
                 {getCallNow()}
               </a>

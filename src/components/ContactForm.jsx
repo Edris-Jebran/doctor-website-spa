@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
+import { trackPhoneCall, trackEmailClick, trackWhatsAppClick } from '../utils/analytics';
 
 const ContactForm = () => {
   const { currentLanguage } = useLanguage();
@@ -148,6 +149,7 @@ const ContactForm = () => {
               <a 
                 href="mailto:mohammadehsanjebran@gmail.com?subject=Appointment%20Request&body=Hello%20Dr.%20Wardak,%0A%0AI%20would%20like%20to%20schedule%20an%20appointment.%0A%0APlease%20include:%0A-%20Your%20name%0A-%20Preferred%20date%20and%20time%0A-%20Reason%20for%20visit%0A-%20Contact%20number%0A%0AThank%20you!"
                 className="bg-gradient-to-r from-primary to-accent text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block transform hover:-translate-y-1 text-sm sm:text-base"
+                onClick={trackEmailClick}
               >
                 {currentLanguage === 'fa' ? 'ارسال ایمیل' : 'Send Email'}
               </a>
@@ -169,6 +171,7 @@ const ContactForm = () => {
               <a 
                 href="tel:+93 78 915 8627"
                 className="bg-gradient-to-r from-accent to-primary text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block transform hover:-translate-y-1"
+                onClick={trackPhoneCall}
               >
                 {currentLanguage === 'fa' ? 'تماس تلفنی' : 'Call Now'}
               </a>
@@ -192,6 +195,7 @@ const ContactForm = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-600 transition-all duration-300 inline-block transform hover:-translate-y-1"
+                onClick={trackWhatsAppClick}
               >
                 {currentLanguage === 'fa' ? 'واتساپ' : 'WhatsApp'}
               </a>

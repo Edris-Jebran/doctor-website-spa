@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
+import { trackAppointmentClick } from '../utils/analytics';
 
 const Hero = ({ title, subtitle, imageUrl }) => {
   const { currentLanguage } = useLanguage();
@@ -37,6 +38,7 @@ const Hero = ({ title, subtitle, imageUrl }) => {
                 <a 
                   href="#contact" 
                   className="bg-white text-primary px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-base sm:text-lg"
+                  onClick={() => trackAppointmentClick('hero_section')}
                 >
                   {getBookAppointment()}
                 </a>

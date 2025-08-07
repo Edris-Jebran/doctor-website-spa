@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
@@ -8,10 +8,16 @@ import Footer from './components/Footer';
 import LanguageToggle from './components/LanguageToggle';
 import AmbientBackground from './components/AmbientBackground';
 import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
+import { initializeAnalytics } from './utils/analytics';
 import './App.css';
 
 function AppContent() {
   const { content, isRTL } = useLanguage();
+  
+  // Initialize analytics when component mounts
+  useEffect(() => {
+    initializeAnalytics();
+  }, []);
   
   return (
     <div className={`App ${isRTL ? 'rtl' : 'ltr'}`}>
