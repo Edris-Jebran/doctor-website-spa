@@ -3,7 +3,7 @@
     "hero": {
       "title": "Dr. Mohammad Ehsan Wardak",
       "subtitle": "35+ Years of Trusted Care",
-      "imageUrl": "/images/doctorEhsanPhoto-a.jpeg"
+      "imageUrl": "images/doctorEhsanPhoto-a.jpeg"
     },
     "about": {
       "bio": "Dr. Mohammad Ehsan Wardak is a highly experienced physician with over 35 years of dedicated service in healthcare. Based in Kabul, Afghanistan, Dr. Wardak has built a reputation for providing compassionate, comprehensive medical care to patients of all ages.",
@@ -57,7 +57,7 @@
     "hero": {
       "title": "دکتر محمد احسان وردک",
       "subtitle": "بیش از ۳۵ سال مراقبت مورد اعتماد",
-      "imageUrl": "/images/doctorEhsanPhoto-a.jpeg"
+      "imageUrl": "images/doctorEhsanPhoto-a.jpeg"
     },
     "about": {
       "bio": "دکتر محمد احسان وردک یک پزشک با تجربه بالا با بیش از ۳۵ سال خدمت فداکارانه در مراقبت‌های بهداشتی است. دکتر وردک که در کابل، افغانستان مستقر است، شهرت خود را برای ارائه مراقبت‌های پزشکی دلسوزانه و جامع به بیماران در تمام سنین ایجاد کرده است.",

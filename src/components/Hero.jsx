@@ -55,7 +55,7 @@ const Hero = ({ title, subtitle, imageUrl }) => {
             <div className="relative">
               <div className="w-72 h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-white">
                 <img 
-                  src={imageUrl} 
+                  src={`${process.env.PUBLIC_URL}/${imageUrl}`} 
                   alt={title}
                   className="w-full h-full object-cover object-center"
                   style={{
