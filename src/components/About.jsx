@@ -57,17 +57,17 @@ const About = ({ bio, credentials }) => {
   return (
     <section id="about" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-8">
+        <div className="text-center mb-12 lg:mb-16">
+          <div className="inline-block mb-6 lg:mb-8">
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">{getAboutTitle()}</h2>
-          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 lg:mb-6 px-4">{getAboutTitle()}</h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
             {getAboutDescription()}
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div className="space-y-10">
             <div>
               <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-6 flex items-center">

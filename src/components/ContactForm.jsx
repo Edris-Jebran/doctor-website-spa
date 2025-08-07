@@ -55,34 +55,34 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-8">
+        <div className="text-center mb-12 lg:mb-16">
+          <div className="inline-block mb-6 lg:mb-8">
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">{getContactTitle()}</h2>
-          <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 lg:mb-6 px-4">{getContactTitle()}</h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4">
             {getContactDescription()}
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-8">{getGetInTouch()}</h3>
-              <div className="space-y-6">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary mb-6 lg:mb-8">{getGetInTouch()}</h3>
+              <div className="space-y-4 lg:space-y-6">
                 <div className="flex items-start group">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mr-6 group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mr-4 sm:mr-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 text-lg mb-2">
+                    <h4 className="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">
                       {currentLanguage === 'fa' ? 'تلفن' : 'Phone'}
                     </h4>
-                    <p className="text-gray-600 text-lg">+93 78 915 8627</p>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-gray-600 text-base sm:text-lg">+93 78 915 8627</p>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-1">
                       {currentLanguage === 'fa' ? 'برای تماس فوری' : 'For immediate contact'}
                     </p>
                   </div>
@@ -133,21 +133,21 @@ const ContactForm = () => {
             <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-8">{getSendMessage()}</h3>
             
             {/* Email Option */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mr-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="flex items-center mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mr-4 sm:mr-6">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900">{getEmailUs()}</h4>
-                  <p className="text-gray-600 mt-1">{getEmailDescription()}</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900">{getEmailUs()}</h4>
+                  <p className="text-gray-600 mt-1 text-sm sm:text-base">{getEmailDescription()}</p>
                 </div>
               </div>
               <a 
                 href="mailto:mohammadehsanjebran@gmail.com?subject=Appointment%20Request&body=Hello%20Dr.%20Wardak,%0A%0AI%20would%20like%20to%20schedule%20an%20appointment.%0A%0APlease%20include:%0A-%20Your%20name%0A-%20Preferred%20date%20and%20time%0A-%20Reason%20for%20visit%0A-%20Contact%20number%0A%0AThank%20you!"
-                className="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block transform hover:-translate-y-1"
+                className="bg-gradient-to-r from-primary to-accent text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block transform hover:-translate-y-1 text-sm sm:text-base"
               >
                 {currentLanguage === 'fa' ? 'ارسال ایمیل' : 'Send Email'}
               </a>

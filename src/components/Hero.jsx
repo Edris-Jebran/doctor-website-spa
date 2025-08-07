@@ -22,27 +22,27 @@ const Hero = ({ title, subtitle, imageUrl }) => {
       <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-32 -translate-y-32"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/3 rounded-full translate-x-48 translate-y-48"></div>
       
-      <div className="relative z-10 text-center text-white px-6 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Text Content */}
           <div className={`order-2 ${currentLanguage === 'fa' ? 'lg:order-2' : 'lg:order-1'}`}>
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <div className="mb-8 lg:mb-12">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-8 leading-tight">
                 {title}
               </h1>
-              <p className="text-lg md:text-xl lg:text-2xl mb-12 opacity-95 font-light leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 lg:mb-12 opacity-95 font-light leading-relaxed px-2">
                 {subtitle}
               </p>
-              <div className={`flex flex-col sm:flex-row gap-6 ${currentLanguage === 'fa' ? 'justify-center lg:justify-end' : 'justify-center lg:justify-start'}`}>
+              <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 ${currentLanguage === 'fa' ? 'justify-center lg:justify-end' : 'justify-center lg:justify-start'}`}>
                 <a 
                   href="#contact" 
-                  className="bg-white text-primary px-10 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-lg"
+                  className="bg-white text-primary px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-base sm:text-lg"
                 >
                   {getBookAppointment()}
                 </a>
                 <a 
                   href="#clinic-info" 
-                  className="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-lg"
+                  className="border-2 border-white text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-base sm:text-lg"
                 >
                   {getFindUs()}
                 </a>
@@ -53,7 +53,7 @@ const Hero = ({ title, subtitle, imageUrl }) => {
           {/* Doctor's Photo */}
           <div className={`order-1 ${currentLanguage === 'fa' ? 'lg:order-1' : 'lg:order-2'} flex justify-center`}>
             <div className="relative">
-              <div className="w-72 h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-white">
+              <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-white">
                 <img 
                   src={`${process.env.PUBLIC_URL}/${imageUrl}`} 
                   alt={title}
@@ -68,10 +68,10 @@ const Hero = ({ title, subtitle, imageUrl }) => {
               </div>
               
               {/* Professional Badge */}
-              <div className="absolute -bottom-6 -right-6 bg-white text-primary px-6 py-3 rounded-xl shadow-2xl">
+              <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-white text-primary px-4 py-2 sm:px-6 sm:py-3 rounded-xl shadow-2xl">
                 <div className="text-center">
-                  <div className="text-3xl font-bold">35+</div>
-                  <div className="text-sm font-semibold">
+                  <div className="text-2xl sm:text-3xl font-bold">35+</div>
+                  <div className="text-xs sm:text-sm font-semibold">
                     {currentLanguage === 'fa' ? 'سال تجربه' : 'Years Experience'}
                   </div>
                 </div>

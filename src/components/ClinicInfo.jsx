@@ -50,17 +50,17 @@ const ClinicInfo = ({ address, hours, coords }) => {
   return (
     <section id="clinic-info" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-8">
+        <div className="text-center mb-12 lg:mb-16">
+          <div className="inline-block mb-6 lg:mb-8">
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">{getFindClinicTitle()}</h2>
-          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 lg:mb-6 px-4">{getFindClinicTitle()}</h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
             {getFindClinicDescription()}
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Map and Street View Section */}
           <div className="space-y-6">
             {/* Interactive Map */}
@@ -78,7 +78,7 @@ const ClinicInfo = ({ address, hours, coords }) => {
                 <h3 className="text-xl font-semibold text-primary">{getStreetView()}</h3>
                 <p className="text-sm text-gray-700">{address}</p>
               </div>
-              <div className="relative h-64">
+              <div className="relative h-48 sm:h-64">
                 <iframe
                   title="Street View"
                   src={`https://maps.google.com/maps?q=${coords.lat},${coords.lng}&hl=en&z=18&output=embed&t=k`}
@@ -99,18 +99,18 @@ const ClinicInfo = ({ address, hours, coords }) => {
           {/* Clinic Details */}
           <div className="space-y-6">
             {/* Address */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200">
-              <div className="flex items-start mb-6">
-                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
+              <div className="flex items-start mb-4 sm:mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">{getClinicAddress()}</h3>
-                  <p className="text-gray-700 leading-relaxed text-base md:text-lg">{address}</p>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2">{getClinicAddress()}</h3>
+                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg">{address}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-2">
                     {currentLanguage === 'fa' ? 'مختصات' : 'Coordinates'}: {coords.lat.toFixed(6)}, {coords.lng.toFixed(6)}
                   </p>
                 </div>
