@@ -1,0 +1,110 @@
+{
+  "en": {
+    "hero": {
+      "title": "Dr. Mohammad Ehsan Wardak",
+      "subtitle": "35+ Years of Trusted Care",
+      "imageUrl": "/images/doctorEhsanPhoto-a.jpeg"
+    },
+    "about": {
+      "bio": "Dr. Mohammad Ehsan Wardak is a highly experienced physician with over 35 years of dedicated service in healthcare. Based in Kabul, Afghanistan, Dr. Wardak has built a reputation for providing compassionate, comprehensive medical care to patients of all ages.",
+      "credentials": [
+        "Medical Degree from Kabul University",
+        "35+ Years of Clinical Experience",
+        "Specialized in General Medicine",
+        "Member of Afghan Medical Association",
+        "Fluent in English, Farsi, and Pashto"
+      ],
+      "philosophy": "I believe in treating each patient as a whole person, not just their symptoms. My approach combines modern medical practices with compassionate care, ensuring every patient receives personalized attention and the highest quality treatment."
+    },
+    "services": [
+      {
+        "name": "General Consultation",
+        "description": "Comprehensive health assessments and personalized treatment plans for all age groups."
+      },
+      {
+        "name": "Preventive Care",
+        "description": "Regular check-ups, vaccinations, and health screenings to maintain optimal wellness."
+      },
+      {
+        "name": "Chronic Disease Management",
+        "description": "Ongoing care and monitoring for conditions like diabetes, hypertension, and heart disease."
+      },
+      {
+        "name": "Emergency Care",
+        "description": "Immediate medical attention for urgent health concerns and acute conditions."
+      }
+    ],
+    "clinicInfo": {
+      "address": "Family Street, Chahrahi Qambar, Kabul",
+      "hours": [
+        "Everyday: 5:30 PM - 8:00 PM"
+      ],
+      "coords": {
+        "lat": 34.53376621853714,
+        "lng": 69.0844923124286
+      }
+    },
+    "contact": {
+      "phone": "+93 78 915 8627",
+      "email": "mohammadehsanjebran@gmail.com",
+      "socialLinks": {
+        "facebook": "https://www.facebook.com/jebran.mohammadehsan/",
+        "instagram": "https://www.instagram.com/jebranmohammad/"
+      }
+    }
+  },
+  "fa": {
+    "hero": {
+      "title": "دکتر محمد احسان وردک",
+      "subtitle": "بیش از ۳۵ سال مراقبت مورد اعتماد",
+      "imageUrl": "/images/doctorEhsanPhoto-a.jpeg"
+    },
+    "about": {
+      "bio": "دکتر محمد احسان وردک یک پزشک با تجربه بالا با بیش از ۳۵ سال خدمت فداکارانه در مراقبت‌های بهداشتی است. دکتر وردک که در کابل، افغانستان مستقر است، شهرت خود را برای ارائه مراقبت‌های پزشکی دلسوزانه و جامع به بیماران در تمام سنین ایجاد کرده است.",
+      "credentials": [
+        "مدرک پزشکی از دانشگاه کابل",
+        "بیش از ۳۵ سال تجربه بالینی",
+        "تخصص در پزشکی عمومی",
+        "عضو انجمن پزشکی افغانستان",
+        "مسلط به انگلیسی، فارسی و پشتو"
+      ],
+      "philosophy": "من معتقدم که هر بیمار را باید به عنوان یک شخص کامل درمان کرد، نه فقط علائم او. رویکرد من ترکیبی از شیوه‌های پزشکی مدرن با مراقبت دلسوزانه است و اطمینان حاصل می‌کند که هر بیمار توجه شخصی و بالاترین کیفیت درمان را دریافت کند."
+    },
+    "services": [
+      {
+        "name": "مشاوره عمومی",
+        "description": "ارزیابی‌های بهداشتی جامع و برنامه‌های درمانی شخصی‌سازی شده برای تمام گروه‌های سنی."
+      },
+      {
+        "name": "مراقبت پیشگیرانه",
+        "description": "معاینات منظم، واکسیناسیون و غربالگری سلامت برای حفظ سلامتی مطلوب."
+      },
+      {
+        "name": "مدیریت بیماری‌های مزمن",
+        "description": "مراقبت و نظارت مستمر برای شرایطی مانند دیابت، فشار خون بالا و بیماری قلبی."
+      },
+      {
+        "name": "مراقبت اورژانس",
+        "description": "توجه پزشکی فوری برای نگرانی‌های بهداشتی فوری و شرایط حاد."
+      }
+    ],
+    "clinicInfo": {
+      "address": "خیابان خانواده، چهره قمبر، کابل",
+      "hours": [
+        "هر روز: ۵:۳۰ عصر - ۸:۰۰ شب"
+      ],
+      "coords": {
+        "lat": 34.53376621853714,
+        "lng": 69.0844923124286
+      }
+    },
+    "contact": {
+      "phone": "+93 78 915 8627",
+      "email": "mohammadehsanjebran@gmail.com",
+      "socialLinks": {
+        "facebook": "https://www.facebook.com/jebran.mohammadehsan/",
+        "instagram": "https://www.instagram.com/jebranmohammad/"
+      }
+    }
+  }
+}

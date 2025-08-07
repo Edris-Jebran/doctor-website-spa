@@ -1,3 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +19,148 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Persian Font for Farsi */
+.rtl {
+  font-family: 'Tahoma', 'Arial', 'Noto Sans', sans-serif;
+}
+
+.rtl * {
+  font-family: inherit;
+}
+
+/* RTL specific adjustments */
+.rtl .flex {
+  flex-direction: row-reverse;
+}
+
+.rtl .space-x-4 > * + * {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+}
+
+.rtl .space-x-6 > * + * {
+  margin-left: 0 !important;
+  margin-right: 1.5rem !important;
+}
+
+.rtl .space-x-8 > * + * {
+  margin-left: 0 !important;
+  margin-right: 2rem !important;
+}
+
+.rtl .mr-4 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+.rtl .mr-6 {
+  margin-right: 0 !important;
+  margin-left: 1.5rem !important;
+}
+
+.rtl .ml-4 {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+}
+
+.rtl .ml-6 {
+  margin-left: 0 !important;
+  margin-right: 1.5rem !important;
+}
+
+/* RTL text alignment */
+.rtl .text-left {
+  text-align: right !important;
+}
+
+.rtl .text-right {
+  text-align: left !important;
+}
+
+/* RTL grid adjustments */
+.rtl .lg\:order-1 {
+  order: 2 !important;
+}
+
+.rtl .lg\:order-2 {
+  order: 1 !important;
+}
+
+/* RTL justify content adjustments */
+.rtl .lg\:justify-start {
+  justify-content: flex-end !important;
+}
+
+.rtl .lg\:justify-end {
+  justify-content: flex-start !important;
+}
+
+/* RTL form adjustments */
+.rtl input,
+.rtl textarea,
+.rtl select {
+  text-align: right;
+}
+
+/* RTL icon positioning */
+.rtl .flex.items-center svg {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+/* RTL badge positioning */
+.rtl .absolute.-bottom-6.-right-6 {
+  right: auto !important;
+  left: 1.5rem !important;
+}
+
+/* RTL social links */
+.rtl .flex.space-x-4 > * + * {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+}
+
+/* RTL contact info */
+.rtl .flex.items-start .mr-4 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+/* RTL service cards */
+.rtl .group .flex.items-center .mr-4 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+/* RTL about section */
+.rtl .flex.items-center .mr-4 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+/* RTL clinic info */
+.rtl .flex.items-start .mr-4 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+/* RTL footer */
+.rtl .flex.space-x-4 > * + * {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+}
+
+/* Better Persian font rendering */
+.rtl {
+  font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08";
+  -webkit-font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08";
+  -moz-font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08";
 }
