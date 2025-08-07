@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Test - Dr. Ehsan Medical Clinic</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PREHWT9P6B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PREHWT9P6B');
+    </script>
+</head>
+<body>
+    <h1>Analytics Test Page</h1>
+    <p>This page is testing Google Analytics tracking.</p>
+    <p>If you can see this page, the tracking should be working.</p>
+    
+    <button onclick="testEvent()">Test Analytics Event</button>
+    
+    <script>
+        function testEvent() {
+            gtag('event', 'test_button_click', {
+                'event_category': 'test',
+                'event_label': 'analytics_test'
+            });
+            alert('Test event sent to Google Analytics!');
+        }
+        
+        // Send a test page view
+        gtag('event', 'page_view', {
+            'page_title': 'Analytics Test Page',
+            'page_location': window.location.href
+        });
+    </script>
+</body>
+</html>
