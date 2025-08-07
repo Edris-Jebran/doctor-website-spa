@@ -53,14 +53,14 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section id="contact" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block mb-8">
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">{getContactTitle()}</h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {getContactDescription()}
           </p>
         </div>
@@ -133,7 +133,7 @@ const ContactForm = () => {
             <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-8">{getSendMessage()}</h3>
             
             {/* Email Option */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mr-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,7 +154,7 @@ const ContactForm = () => {
             </div>
             
             {/* Phone Option */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center mr-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,7 +175,7 @@ const ContactForm = () => {
             </div>
             
             {/* WhatsApp Option */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mr-6">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">

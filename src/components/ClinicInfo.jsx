@@ -48,14 +48,14 @@ const ClinicInfo = ({ address, hours, coords }) => {
   };
   
   return (
-    <section id="clinic-info" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section id="clinic-info" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block mb-8">
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">{getFindClinicTitle()}</h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
             {getFindClinicDescription()}
           </p>
         </div>
@@ -64,19 +64,19 @@ const ClinicInfo = ({ address, hours, coords }) => {
           {/* Map and Street View Section */}
           <div className="space-y-6">
             {/* Interactive Map */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
               <div className="p-6 border-b border-gray-100">
                 <h3 className="text-xl font-semibold text-primary">{getInteractiveMap()}</h3>
-                <p className="text-sm text-gray-600">{getMapDescription()}</p>
+                <p className="text-sm text-gray-700">{getMapDescription()}</p>
               </div>
               <FallbackMap coords={coords} address={address} />
             </div>
             
             {/* Street View */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
               <div className="p-6 border-b border-gray-100">
                 <h3 className="text-xl font-semibold text-primary">{getStreetView()}</h3>
-                <p className="text-sm text-gray-600">{address}</p>
+                <p className="text-sm text-gray-700">{address}</p>
               </div>
               <div className="relative h-64">
                 <iframe
@@ -99,7 +99,7 @@ const ClinicInfo = ({ address, hours, coords }) => {
           {/* Clinic Details */}
           <div className="space-y-6">
             {/* Address */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200">
               <div className="flex items-start mb-6">
                 <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@ const ClinicInfo = ({ address, hours, coords }) => {
             </div>
             
             {/* Hours */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200">
               <div className="flex items-start mb-6">
                 <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mr-4">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
