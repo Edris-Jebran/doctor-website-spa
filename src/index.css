@@ -16,6 +16,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global text wrapping to prevent overflow on mobile */
+p, h1, h2, h3, h4, a, span, li, button, div {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -42,6 +49,11 @@ code {
 :focus-visible {
   outline: 3px solid #005E7A;
   outline-offset: 2px;
+}
+
+/* Helper to avoid overlap with Sticky CTA on small screens */
+.safe-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 72px);
 }
 
 /* RTL Support */
