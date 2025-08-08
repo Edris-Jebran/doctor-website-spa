@@ -30,19 +30,26 @@ code {
 
 /* Skip link */
 .skip-link {
-  position: absolute;
+  position: fixed; /* attach to viewport so it never gets clipped */
   top: -40px;
   left: 16px;
   background: #ffffff;
   color: #005E7A;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
   border: 2px solid #005E7A;
-  z-index: 50;
+  z-index: 60; /* above language toggle/background */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: top 0.15s ease;
 }
 .skip-link:focus {
-  top: 16px;
+  top: calc(env(safe-area-inset-top) + 16px);
   outline: none;
+}
+/* Mirror position in RTL */
+:root[dir="rtl"] .skip-link {
+  left: auto;
+  right: 16px;
 }
 
 /* Focus outline for better accessibility */
