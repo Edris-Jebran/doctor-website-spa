@@ -45,7 +45,7 @@ const Footer = ({ phone, email, socialLinks }) => {
               {getClinicDescription()}
             </p>
             <div className="space-y-2 text-gray-300 text-sm sm:text-base">
-              <p>📍 {currentLanguage === 'fa' ? 'خیابان خانواده، چهره قمبر، کابل' : 'Family Street, Chahrahi Qambar, Kabul'}</p>
+              <p>📍 {currentLanguage === 'fa' ? 'سَرَک فامیلی‌ها، چهارراهی قمبر، کابل' : 'Family Street, Chahrahi Qambar, Kabul'}</p>
               <p>🕒 {currentLanguage === 'fa' ? 'هر روز: ۵:۳۰ عصر - ۸:۰۰ شب' : 'Everyday: 5:30 PM - 8:00 PM'}</p>
             </div>
           </div>

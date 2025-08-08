@@ -118,7 +118,7 @@ const ContactForm = () => {
                       {currentLanguage === 'fa' ? 'آدرس' : 'Address'}
                     </h4>
                     <p className="text-gray-600 text-lg">
-                      {currentLanguage === 'fa' ? 'خیابان خانواده، چهره قمبر، کابل' : 'Family Street, Chahrahi Qambar, Kabul'}
+                      {currentLanguage === 'fa' ? 'سَرَک فامیلی‌ها، چهارراهی قمبر، کابل' : 'Family Street, Chahrahi Qambar, Kabul'}
                     </p>
                     <p className="text-sm text-gray-500 mt-1">
                       {currentLanguage === 'fa' ? 'کلینیک دکتر محمد احسان وردک' : 'Dr. Mohammad Ehsan Wardak Clinic'}

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import FallbackMap from './FallbackMap';
+import { trackMapInteraction } from '../utils/analytics';
 
 const ClinicInfo = ({ address, hours, coords }) => {
   const { currentLanguage } = useLanguage();
+  const [showInteractiveMap, setShowInteractiveMap] = useState(false);
   
   const getFindClinicTitle = () => {
     return currentLanguage === 'fa' ? 'کلینیک ما را پیدا کنید' : 'Find Our Clinic';
@@ -46,6 +48,13 @@ const ClinicInfo = ({ address, hours, coords }) => {
   const getFindUsOnMaps = () => {
     return currentLanguage === 'fa' ? 'ما را در نقشه گوگل پیدا کنید' : 'Find Us on Google Maps';
   };
+
+  const getViewMap = () => (currentLanguage === 'fa' ? 'نمایش نقشه' : 'View Map');
+
+  const handleShowMap = () => {
+    setShowInteractiveMap(true);
+    trackMapInteraction('clinic_info_view_map');
+  };
   
   return (
     <section id="clinic-info" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
@@ -63,13 +72,48 @@ const ClinicInfo = ({ address, hours, coords }) => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Map and Street View Section */}
           <div className="space-y-6">
-            {/* Interactive Map */}
+            {/* Interactive Map (lazy) */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
               <div className="p-6 border-b border-gray-100">
                 <h3 className="text-xl font-semibold text-primary">{getInteractiveMap()}</h3>
                 <p className="text-sm text-gray-700">{getMapDescription()}</p>
               </div>
-              <FallbackMap coords={coords} address={address} />
+              {!showInteractiveMap ? (
+                <div className="p-4">
+                  <FallbackMap coords={coords} address={address} />
+                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                    <button
+                      type="button"
+                      onClick={handleShowMap}
+                      className="bg-primary text-white px-4 py-3 rounded-xl font-semibold hover:bg-primary/90"
+                    >
+                      {getViewMap()}
+                    </button>
+                    <a
+                      href={`https://maps.google.com/?q=${coords.lat},${coords.lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border border-primary text-primary px-4 py-3 rounded-xl font-semibold hover:bg-primary/5"
+                      onClick={() => trackMapInteraction('clinic_info_open_google_maps')}
+                    >
+                      {getFindUsOnMaps()}
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div className="relative h-56 sm:h-72">
+                  <iframe
+                    title="Interactive Map"
+                    src={`https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=16&output=embed`}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              )}
             </div>
             
             {/* Street View */}

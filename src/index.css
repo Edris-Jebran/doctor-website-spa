@@ -21,6 +21,29 @@ code {
     monospace;
 }
 
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 16px;
+  background: #ffffff;
+  color: #005E7A;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #005E7A;
+  z-index: 50;
+}
+.skip-link:focus {
+  top: 16px;
+  outline: none;
+}
+
+/* Focus outline for better accessibility */
+:focus-visible {
+  outline: 3px solid #005E7A;
+  outline-offset: 2px;
+}
+
 /* RTL Support */
 .rtl {
   direction: rtl;
