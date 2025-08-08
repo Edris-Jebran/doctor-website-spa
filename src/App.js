@@ -6,9 +6,8 @@ import ClinicInfo from './components/ClinicInfo';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import LanguageToggle from './components/LanguageToggle';
-import AmbientBackground from './components/AmbientBackground';
+import MedicalBackground from './components/MedicalBackground';
 import StickyCTA from './components/StickyCTA';
-import SkipLink from './components/SkipLink';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
 import { initializeAnalytics } from './utils/analytics';
@@ -32,8 +31,9 @@ function AppContent() {
   
   return (
     <div className={`App ${isRTL ? 'rtl' : 'ltr'}`}>
-      <SkipLink />
-      <AmbientBackground />
+      {/* Background layer */}
+      <MedicalBackground />
+
       <LanguageToggle />
       <main id="main" className="safe-bottom">
         <Hero 

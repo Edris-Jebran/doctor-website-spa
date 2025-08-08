@@ -12,7 +12,7 @@ const StickyCTA = () => {
 
   return (
     <div
-      className="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-t border-gray-200"
+      className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-white/95 backdrop-blur border-t border-gray-200"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       role="region"
       aria-label={currentLanguage === 'fa' ? 'اقدامات سریع' : 'Quick actions'}
