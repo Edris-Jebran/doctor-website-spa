@@ -52,11 +52,11 @@ const ContactForm = () => {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-16">
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary mb-6 lg:mb-8">{getGetInTouch()}</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary mb-5 lg:mb-8">{getGetInTouch()}</h3>
               <div className="space-y-4 lg:space-y-6">
                 <div className="flex items-start group">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mr-4 sm:mr-6 group-hover:scale-110 transition-transform duration-300">
@@ -97,7 +97,7 @@ const ContactForm = () => {
           {/* Contact Options */}
           <div className="space-y-6">
             {/* Phone Option */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white/80 backdrop-blur-sm p-7 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center mr-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ const ContactForm = () => {
             </div>
             
             {/* WhatsApp Option */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white/80 backdrop-blur-sm p-7 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mr-6">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">

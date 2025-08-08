@@ -81,7 +81,7 @@ const ClinicInfo = ({ address, hours, coords }) => {
               {!showInteractiveMap ? (
                 <div className="p-4">
                   <FallbackMap coords={coords} address={address} />
-                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                  <div className="mt-3 flex flex-col sm:flex-row gap-3">
                     <button
                       type="button"
                       onClick={handleShowMap}

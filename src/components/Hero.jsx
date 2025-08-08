@@ -28,13 +28,13 @@ const Hero = ({ title, subtitle, imageUrl }) => {
           {/* Text Content */}
           <div className={`order-2 ${currentLanguage === 'fa' ? 'lg:order-2' : 'lg:order-1'}`}>
             <div className="mb-8 lg:mb-12">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-8 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 lg:mb-8 leading-tight">
                 {title}
               </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 lg:mb-12 opacity-95 font-light leading-relaxed px-2">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 lg:mb-12 opacity-95 font-light leading-relaxed px-2">
                 {subtitle}
               </p>
-              <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 ${currentLanguage === 'fa' ? 'justify-center lg:justify-end' : 'justify-center lg:justify-start'}`}>
+              <div className={`flex flex-col sm:flex-row gap-3 sm:gap-6 ${currentLanguage === 'fa' ? 'justify-center lg:justify-end' : 'justify-center lg:justify-start'}`}>
                 <a 
                   href="#contact" 
                   className="bg-white text-primary px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-base sm:text-lg"

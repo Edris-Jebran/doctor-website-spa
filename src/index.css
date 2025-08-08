@@ -28,28 +28,27 @@ code {
     monospace;
 }
 
-/* Skip link */
+/* Skip link - always visible, high contrast, top-left (or top-right in RTL) */
 .skip-link {
-  position: fixed; /* attach to viewport so it never gets clipped */
-  top: -40px;
-  left: 16px;
-  background: #ffffff;
-  color: #005E7A;
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 12px);
+  left: 12px;
+  background: #005E7A;
+  color: #ffffff;
   padding: 10px 14px;
-  border-radius: 10px;
-  border: 2px solid #005E7A;
-  z-index: 60; /* above language toggle/background */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  transition: top 0.15s ease;
+  border-radius: 9999px;
+  border: 2px solid #00485f;
+  z-index: 60;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  font-weight: 600;
 }
-.skip-link:focus {
-  top: calc(env(safe-area-inset-top) + 16px);
-  outline: none;
-}
-/* Mirror position in RTL */
 :root[dir="rtl"] .skip-link {
   left: auto;
-  right: 16px;
+  right: 12px;
+}
+.skip-link:focus {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
 }
 
 /* Focus outline for better accessibility */

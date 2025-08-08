@@ -35,7 +35,7 @@ function AppContent() {
       <SkipLink />
       <AmbientBackground />
       <LanguageToggle />
-      <main id="main">
+      <main id="main" className="safe-bottom">
         <Hero 
           title={content.hero.title}
           subtitle={content.hero.subtitle}
