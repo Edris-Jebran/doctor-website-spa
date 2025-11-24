@@ -34,7 +34,7 @@ const Services = ({ services }) => {
   };
   
   return (
-    <section id="services" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
+    <section id="services" className="py-20 bg-muted relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 lg:mb-16">
           <div className="inline-block mb-6 lg:mb-8">
@@ -50,7 +50,7 @@ const Services = ({ services }) => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="group bg-white/80 backdrop-blur-sm p-4 sm:p-5 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              className="group bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-gray-100 hover:border-accent/50 hover:shadow-md transition-all duration-200"
             >
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,34 +66,39 @@ const Services = ({ services }) => {
             </div>
           ))}
         </div>
-        
-        <div className="bg-gradient-to-r from-primary to-accent rounded-3xl p-6 sm:p-8 lg:p-10 text-white text-center relative overflow-hidden shadow-xl">
-          {/* Background Pattern */}
-          <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-5"></div>
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white bg-opacity-3 rounded-full -translate-y-32 translate-x-32"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white bg-opacity-3 rounded-full translate-y-24 -translate-x-24"></div>
-          
-          <div className="relative z-10">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 lg:mb-6 px-4">{getEmergencyTitle()}</h3>
-            <p className="text-base sm:text-lg md:text-xl mb-6 lg:mb-8 opacity-95 max-w-3xl mx-auto px-4">
-              {getEmergencyDescription()}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <a 
-                href="#contact" 
-                className="bg-white text-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm sm:text-base"
-                onClick={() => trackAppointmentClick('emergency_section')}
-              >
-                {getContactEmergency()}
-              </a>
-              <a 
-                href="tel:+93 78 915 8627" 
-                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 inline-block shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm sm:text-base"
-                onClick={trackPhoneCall}
-              >
-                {getCallNow()}
-              </a>
-            </div>
+
+        <div className="flex justify-center mb-16">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent transition"
+          >
+            {currentLanguage === 'fa' ? 'درباره خدمات بیشتر بپرسید' : 'Ask about all services'}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <div className="bg-primary rounded-3xl p-6 sm:p-8 lg:p-10 text-white text-center shadow-xl">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 lg:mb-6 px-4">{getEmergencyTitle()}</h3>
+          <p className="text-base sm:text-lg md:text-xl mb-6 lg:mb-8 opacity-90 max-w-3xl mx-auto px-4">
+            {getEmergencyDescription()}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <a 
+              href="#contact" 
+              className="bg-white text-primary px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-semibold hover:bg-muted transition-all duration-200 inline-block shadow-md"
+              onClick={() => trackAppointmentClick('emergency_section')}
+            >
+              {getContactEmergency()}
+            </a>
+            <a 
+              href="tel:+93 78 915 8627" 
+              className="border border-white/70 text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all duration-200 inline-block"
+              onClick={trackPhoneCall}
+            >
+              {getCallNow()}
+            </a>
           </div>
         </div>
       </div>

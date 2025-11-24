@@ -4,7 +4,7 @@ const FallbackMap = ({ coords, address }) => {
   const mapUrl = `https://maps.google.com/maps?q=${coords.lat},${coords.lng}&hl=en&z=15&output=embed`;
   
   return (
-    <div className="h-96 bg-gray-200 rounded-lg overflow-hidden">
+    <div className="h-64 sm:h-72 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
       <iframe
         title="Clinic Location"
         src={mapUrl}

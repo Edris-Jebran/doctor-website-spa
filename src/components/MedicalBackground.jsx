@@ -24,15 +24,15 @@ export default function MedicalBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Bokeh cells
-    const cells = Array.from({ length: 24 }).map(() => ({
+    // Bokeh cells (kept sparse for subtle motion)
+    const cells = Array.from({ length: 16 }).map(() => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       r: Math.random() * 24 + 10,
-      a: Math.random() * 0.12 + 0.05,
-      vx: (Math.random() - 0.5) * 0.2,
-      vy: (Math.random() - 0.5) * 0.2,
-      hue: Math.random() < 0.5 ? 195 : 28 // clinic palette: teal/accent
+      a: Math.random() * 0.08 + 0.03,
+      vx: (Math.random() - 0.5) * 0.16,
+      vy: (Math.random() - 0.5) * 0.16,
+      hue: Math.random() < 0.7 ? 188 : 32 // clinic palette: teal + warm accent
     }));
 
     // Medical crosses
@@ -50,8 +50,8 @@ export default function MedicalBackground() {
 
     const drawGradient = () => {
       const g = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
-      g.addColorStop(0, 'rgba(15, 23, 42, 0.96)'); // slate-900-ish
-      g.addColorStop(1, 'rgba(2, 44, 53, 0.94)'); // deep teal
+      g.addColorStop(0, 'rgba(12, 18, 34, 0.92)'); // deep navy
+      g.addColorStop(1, 'rgba(11, 181, 167, 0.25)'); // soft teal wash
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
     };
@@ -78,7 +78,7 @@ export default function MedicalBackground() {
         ctx.translate(cr.x, cr.y);
         ctx.rotate(cr.rot);
         ctx.globalAlpha = cr.a;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
         const s = cr.s;
         // simple medical cross
         ctx.fillRect(-s * 0.15, -s, s * 0.3, s * 2);
@@ -94,10 +94,10 @@ export default function MedicalBackground() {
       const baseline = h * 0.35; // keep it behind hero
 
       ctx.save();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = 'rgba(0, 209, 255, 0.45)'; // teal glow
-      ctx.shadowColor = 'rgba(0, 209, 255, 0.35)';
-      ctx.shadowBlur = 12;
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(11, 181, 167, 0.35)'; // teal glow
+      ctx.shadowColor = 'rgba(11, 181, 167, 0.25)';
+      ctx.shadowBlur = 10;
 
       ctx.beginPath();
       const speed = 120; // px per second

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import FallbackMap from './FallbackMap';
 import { trackMapInteraction } from '../utils/analytics';
@@ -6,6 +6,8 @@ import { trackMapInteraction } from '../utils/analytics';
 const ClinicInfo = ({ address, hours, coords }) => {
   const { currentLanguage } = useLanguage();
   const [showInteractiveMap, setShowInteractiveMap] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const mapObserverRef = useRef(null);
   
   const getFindClinicTitle = () => {
     return currentLanguage === 'fa' ? 'کلینیک ما را پیدا کنید' : 'Find Our Clinic';
@@ -23,10 +25,6 @@ const ClinicInfo = ({ address, hours, coords }) => {
   
   const getMapDescription = () => {
     return currentLanguage === 'fa' ? 'مسیرها را دریافت کنید و منطقه را کاوش کنید' : 'Get directions and explore the area';
-  };
-  
-  const getStreetView = () => {
-    return currentLanguage === 'fa' ? 'نمای خیابان' : 'Street View';
   };
   
   const getClinicAddress = () => {
@@ -50,14 +48,49 @@ const ClinicInfo = ({ address, hours, coords }) => {
   };
 
   const getViewMap = () => (currentLanguage === 'fa' ? 'نمایش نقشه' : 'View Map');
+  const getCopyAddress = () => (currentLanguage === 'fa' ? 'کپی آدرس' : 'Copy address');
+  const getCopied = () => (currentLanguage === 'fa' ? 'کپی شد' : 'Copied');
 
   const handleShowMap = () => {
     setShowInteractiveMap(true);
     trackMapInteraction('clinic_info_view_map');
   };
+
+  const handleCopyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(address);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // silently fail, UX stays unchanged
+    }
+  };
+
+  // Auto-load map when section enters view
+  useEffect(() => {
+    if (showInteractiveMap) return undefined;
+    const el = mapObserverRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowInteractiveMap(true);
+            trackMapInteraction('clinic_info_auto_load_map');
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [showInteractiveMap]);
   
   return (
-    <section id="clinic-info" className="py-20 bg-white/95 backdrop-blur-sm relative z-10">
+    <section id="clinic-info" className="py-20 bg-white relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 lg:mb-16">
           <div className="inline-block mb-6 lg:mb-8">
@@ -71,15 +104,24 @@ const ClinicInfo = ({ address, hours, coords }) => {
         
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Map and Street View Section */}
-          <div className="space-y-6">
+          <div className="space-y-6" ref={mapObserverRef}>
             {/* Interactive Map (lazy) */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-              <div className="p-6 border-b border-gray-100">
-                <h3 className="text-xl font-semibold text-primary">{getInteractiveMap()}</h3>
-                <p className="text-sm text-gray-700">{getMapDescription()}</p>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="p-6 border-b border-gray-100 flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-semibold text-primary">{getInteractiveMap()}</h3>
+                  <p className="text-sm text-gray-700">{getMapDescription()}</p>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-gray-600 bg-muted px-3 py-1.5 rounded-full">
+                  <span>🕒</span>
+                  <span>{hours[0]}</span>
+                </div>
               </div>
               {!showInteractiveMap ? (
                 <div className="p-4">
+                  <div className="rounded-xl border border-dashed border-primary/40 bg-muted/50 h-56 sm:h-64 flex items-center justify-center text-primary/70 text-sm mb-3">
+                    <span>{currentLanguage === 'fa' ? 'در حال بارگذاری نقشه...' : 'Loading map...'}</span>
+                  </div>
                   <FallbackMap coords={coords} address={address} />
                   <div className="mt-3 flex flex-col sm:flex-row gap-3">
                     <button
@@ -115,36 +157,13 @@ const ClinicInfo = ({ address, hours, coords }) => {
                 </div>
               )}
             </div>
-            
-            {/* Street View */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-              <div className="p-6 border-b border-gray-100">
-                <h3 className="text-xl font-semibold text-primary">{getStreetView()}</h3>
-                <p className="text-sm text-gray-700">{address}</p>
-              </div>
-              <div className="relative h-48 sm:h-64">
-                <iframe
-                  title="Street View"
-                  src={`https://maps.google.com/maps?q=${coords.lat},${coords.lng}&hl=en&z=18&output=embed&t=k`}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-                  📍 {coords.lat.toFixed(6)}, {coords.lng.toFixed(6)}
-                </div>
-              </div>
-            </div>
           </div>
           
           {/* Clinic Details */}
           <div className="space-y-6">
             {/* Address */}
-            <div className="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
-              <div className="flex items-start mb-4 sm:mb-6">
+            <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+              <div className="flex items-start">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -159,11 +178,26 @@ const ClinicInfo = ({ address, hours, coords }) => {
                   </p>
                 </div>
               </div>
-            </div>
-            
-            {/* Hours */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200">
-              <div className="flex items-start mb-6">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  type="button"
+                  onClick={handleCopyAddress}
+                  className="flex-1 inline-flex items-center justify-center gap-2 border border-gray-200 text-primary px-4 py-3 rounded-xl font-semibold hover:border-primary/50 transition"
+                >
+                  <span>📋</span>
+                  <span>{copied ? getCopied() : getCopyAddress()}</span>
+                </button>
+                <a
+                  href={`https://maps.google.com/?q=${coords.lat},${coords.lng}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-white px-4 py-3 rounded-xl font-semibold hover:bg-primary/90 transition"
+                >
+                  <span>🗺️</span>
+                  <span>{getFindUsOnMaps()}</span>
+                </a>
+              </div>
+              <div className="flex items-start">
                 <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mr-4">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -181,7 +215,7 @@ const ClinicInfo = ({ address, hours, coords }) => {
             </div>
             
             {/* Find Us Button */}
-            <div className="bg-gradient-to-r from-primary to-accent p-8 rounded-2xl text-white text-center">
+            <div className="bg-primary p-8 rounded-2xl text-white text-center shadow-lg">
               <h3 className="text-xl font-bold mb-4">{getNeedDirections()}</h3>
               <p className="mb-6 opacity-90 text-base md:text-lg">
                 {getDirectionsDescription()}
