@@ -18,7 +18,8 @@ function AppContent() {
   
   // Initialize analytics when component mounts
   useEffect(() => {
-    initializeAnalytics();
+    const cleanup = initializeAnalytics();
+    return cleanup;
   }, []);
 
   // Keep document direction in sync with current language for proper RTL support

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { trackPhoneCall } from '../utils/analytics';
 import LanguageToggle from './LanguageToggle.jsx';
@@ -6,12 +6,37 @@ import LanguageToggle from './LanguageToggle.jsx';
 const Header = () => {
   const { currentLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
+  const mobileMenuRef = useRef(null);
+  const mobileToggleRef = useRef(null);
 
   const links = [
     { href: '#services', label: currentLanguage === 'fa' ? 'خدمات' : 'Services' },
     { href: '#clinic-info', label: currentLanguage === 'fa' ? 'ساعات و آدرس' : 'Hours & Address' },
     { href: '#contact', label: currentLanguage === 'fa' ? 'تماس' : 'Contact' },
   ];
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const firstLink = mobileMenuRef.current?.querySelector('a, button');
+    if (firstLink instanceof HTMLElement) {
+      firstLink.focus();
+    }
+
+    const onKeyDown = (event) => {
+      if (event.key !== 'Escape') {
+        return;
+      }
+      setOpen(false);
+      if (mobileToggleRef.current instanceof HTMLElement) {
+        mobileToggleRef.current.focus();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
 
   return (
     <header className="fixed top-0 inset-x-0 z-40 bg-primary/70 backdrop-blur border-b border-white/10">
@@ -42,8 +67,12 @@ const Header = () => {
         </nav>
 
         <button
+          ref={mobileToggleRef}
+          type="button"
           className="sm:hidden text-white/80 border border-white/20 rounded-lg px-3 py-2 text-sm"
           onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-controls="mobile-nav-panel"
           aria-label={currentLanguage === 'fa' ? 'منو' : 'Menu'}
         >
           ☰
@@ -51,7 +80,11 @@ const Header = () => {
       </div>
 
       {open && (
-        <div className="sm:hidden bg-primary/90 backdrop-blur border-t border-white/10">
+        <div
+          id="mobile-nav-panel"
+          ref={mobileMenuRef}
+          className="sm:hidden bg-primary/90 backdrop-blur border-t border-white/10"
+        >
           <div className="px-4 py-3 space-y-2 text-white/90">
             <LanguageToggle size="compact" />
             {links.map((link) => (

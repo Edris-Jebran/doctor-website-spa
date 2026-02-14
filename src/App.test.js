@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+beforeEach(() => {
+  window.localStorage.removeItem('doctor_site_language');
+});
+
+test('renders key english sections by default', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /dr\. wardak clinic/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /our medical services/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /contact us/i })).toBeInTheDocument();
 });

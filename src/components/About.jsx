@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext.jsx';
 
 const About = ({ bio, credentials }) => {
   const { currentLanguage } = useLanguage();
+  const isRTL = currentLanguage === 'fa';
   
   const getAboutTitle = () => {
     return currentLanguage === 'fa' 
@@ -70,8 +71,8 @@ const About = ({ bio, credentials }) => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div className="space-y-10">
             <div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-6 flex items-center">
-                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-4">
+              <h3 className={`text-2xl md:text-3xl font-semibold text-primary mb-6 flex items-center gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -86,8 +87,8 @@ const About = ({ bio, credentials }) => {
             </div>
             
             <div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-6 flex items-center">
-                <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center mr-4">
+              <h3 className={`text-2xl md:text-3xl font-semibold text-primary mb-6 flex items-center gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
@@ -96,8 +97,8 @@ const About = ({ bio, credentials }) => {
               </h3>
               <div className="space-y-4">
                 {credentials.map((credential, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="w-2 h-2 bg-accent rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                  <div key={index} className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <div className="w-2 h-2 bg-accent rounded-full mt-3 flex-shrink-0"></div>
                     <p className="text-gray-800 leading-relaxed text-base md:text-lg">{credential}</p>
                   </div>
                 ))}
@@ -110,8 +111,8 @@ const About = ({ bio, credentials }) => {
               <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-6">{getWhyChooseTitle()}</h3>
               <div className="grid gap-6">
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
+                  <div className={`flex items-center gap-4 mb-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -127,8 +128,8 @@ const About = ({ bio, credentials }) => {
                 </div>
                 
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mr-4">
+                  <div className={`flex items-center gap-4 mb-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
                       </svg>
@@ -144,8 +145,8 @@ const About = ({ bio, credentials }) => {
                 </div>
                 
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
+                  <div className={`flex items-center gap-4 mb-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
@@ -161,8 +162,8 @@ const About = ({ bio, credentials }) => {
                 </div>
                 
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mr-4">
+                  <div className={`flex items-center gap-4 mb-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>

@@ -9,9 +9,25 @@ export default function MedicalBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) {
+      return undefined;
+    }
     const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return undefined;
+    }
 
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let prefersReducedMotion = reducedMotionQuery.matches;
+    const onReducedMotionChange = (event) => {
+      prefersReducedMotion = event.matches;
+    };
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+      reducedMotionQuery.addEventListener('change', onReducedMotionChange);
+    } else if (typeof reducedMotionQuery.addListener === 'function') {
+      reducedMotionQuery.addListener(onReducedMotionChange);
+    }
 
     const resize = () => {
       canvas.width = Math.floor(window.innerWidth * DPR);
@@ -47,6 +63,7 @@ export default function MedicalBackground() {
 
     let t = 0;
     let rafId;
+    let lastFrameTime = 0;
 
     const drawGradient = () => {
       const g = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
@@ -132,7 +149,24 @@ export default function MedicalBackground() {
       ctx.restore();
     };
 
-    const animate = () => {
+    const animate = (timestamp = 0) => {
+      const frameBudget = window.innerWidth < 768 ? 32 : 16;
+      if (document.visibilityState === 'hidden') {
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+      if (prefersReducedMotion) {
+        drawGradient();
+        drawCells();
+        drawCrosses();
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+      if (timestamp - lastFrameTime < frameBudget) {
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTime = timestamp;
       drawGradient();
       drawCells();
       drawCrosses();
@@ -145,6 +179,11 @@ export default function MedicalBackground() {
 
     return () => {
       window.removeEventListener('resize', resize);
+      if (typeof reducedMotionQuery.removeEventListener === 'function') {
+        reducedMotionQuery.removeEventListener('change', onReducedMotionChange);
+      } else if (typeof reducedMotionQuery.removeListener === 'function') {
+        reducedMotionQuery.removeListener(onReducedMotionChange);
+      }
       cancelAnimationFrame(rafId);
     };
   }, []);

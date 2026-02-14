@@ -80,6 +80,7 @@ Edit `src/data/siteContent.json` to update:
 ```env
 REACT_APP_FORM_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
 ```
+   Tip: start from `.env.example` and never commit real `.env` values.
 
 ### 5. Update Contact Information
 
@@ -147,6 +148,7 @@ doctor-website-spa/
 - `npm start` - Runs the app in development mode
 - `npm test` - Launches the test runner
 - `npm run build` - Builds the app for production
+- `npm run check:secrets` - Scans the repo for obvious leaked keys/tokens before push
 - `npm run eject` - Ejects from Create React App (not recommended)
 
 ## Customization Guide

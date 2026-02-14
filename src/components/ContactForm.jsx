@@ -4,6 +4,7 @@ import { trackPhoneCall, trackWhatsAppClick } from '../utils/analytics';
 
 const ContactForm = () => {
   const { currentLanguage } = useLanguage();
+  const isRTL = currentLanguage === 'fa';
   const [copied, setCopied] = useState(false);
   
   const getContactTitle = () => {
@@ -65,7 +66,7 @@ const ContactForm = () => {
         
         <div className="max-w-3xl mx-auto">
           <div className="bg-white p-7 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 transform hover:-translate-y-1">
-            <div className="flex items-start mb-6 gap-4">
+            <div className={`flex items-start mb-6 gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
               <div className="w-14 h-14 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center text-white text-2xl">
                 📞
               </div>
@@ -113,7 +114,7 @@ const ContactForm = () => {
                 <span>📋</span>
                 <span>{copied ? getCopied() : getCopy()}</span>
               </button>
-              <p className="text-xs text-gray-500 sm:ml-auto">
+              <p className={`text-xs text-gray-500 ${isRTL ? 'sm:mr-auto' : 'sm:ml-auto'}`}>
                 {getWhatsAppDescription()}
               </p>
             </div>
