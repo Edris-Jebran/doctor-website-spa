@@ -30,3 +30,10 @@ test('call link dials the number without spaces', () => {
   const calls = screen.getAllByRole('link', { name: /تماس/ }).filter((a) => a.getAttribute('href')?.startsWith('tel:'));
   expect(calls[0]).toHaveAttribute('href', 'tel:+93789158627');
 });
+
+test('brand link shows the logo mark without changing its name', () => {
+  const { container } = renderHeader();
+  const brand = screen.getByRole('link', { name: 'داکتر احسان جبران' });
+  expect(brand.querySelector('svg[data-logo="mark"]')).not.toBeNull();
+  expect(container).toBeTruthy();
+});

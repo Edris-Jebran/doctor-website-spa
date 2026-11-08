@@ -399,7 +399,8 @@
       "copyFailed": "کاپی نشد. متن را لمس کرده و نگه دارید تا کاپی شود.",
       "footer": {
         "rights": "تمام حقوق محفوظ است.",
-        "followUs": "دنبال کنید"
+        "followUs": "دنبال کنید",
+        "builtBy": "طراحی و نگهداری توسط"
       },
       "scrollTop": "برگشت به بالا",
       "quickActions": "اقدامات سریع"
@@ -805,7 +806,8 @@
       "copyFailed": "Couldn't copy. Press and hold the text to copy it.",
       "footer": {
         "rights": "All rights reserved.",
-        "followUs": "Follow"
+        "followUs": "Follow",
+        "builtBy": "Built and maintained by"
       },
       "scrollTop": "Back to top",
       "quickActions": "Quick actions"

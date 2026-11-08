@@ -4,6 +4,7 @@ import { trackPhoneCall } from '../utils/analytics';
 import { telHref } from '../utils/contactLinks';
 import LanguageToggle from './LanguageToggle.jsx';
 import Icon from './Icon';
+import { LogoMark } from './Logo';
 
 const Header = () => {
   const { content } = useLanguage();
@@ -35,8 +36,9 @@ const Header = () => {
   return (
     <header className="fixed top-0 inset-x-0 z-40 border-b border-primary/10 bg-white/95 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        <a href="#main" className="text-lg font-semibold text-primary">
-          {brand.short}
+        <a href="#main" className="inline-flex items-center gap-2.5 text-lg font-semibold text-primary">
+          <LogoMark className="h-9 w-9 flex-none" />
+          <span>{brand.short}</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-1 text-ink" aria-label={ui.menu}>

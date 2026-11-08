@@ -48,3 +48,11 @@ test('locations show clinic and Mawla Ali Hospital with one directions button', 
   expect(screen.getAllByRole('link', { name: /Get directions/ })).toHaveLength(1);
   expect(container).not.toHaveTextContent(/Need Directions|Find Us on Google Maps/);
 });
+
+test('footer credits JT Web Services with a link to jebrantech.com', () => {
+  wrap(<Footer />);
+  const credit = screen.getByRole('link', { name: /JT Web Services/ });
+  expect(credit).toHaveAttribute('href', 'https://jebrantech.com');
+  expect(credit).toHaveAttribute('rel', expect.stringContaining('noopener'));
+  expect(screen.getByText(/Built and maintained by/)).toBeInTheDocument();
+});

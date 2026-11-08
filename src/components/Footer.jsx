@@ -4,6 +4,7 @@ import { trackEmailClick, trackPhoneCall } from '../utils/analytics';
 import { formatTime } from '../utils/clinicHours';
 import { telHref } from '../utils/contactLinks';
 import Icon from './Icon';
+import { LogoMark, JTMark } from './Logo';
 
 const Footer = () => {
   const { lang, content } = useLanguage();
@@ -19,7 +20,10 @@ const Footer = () => {
     <footer className="on-dark bg-primary text-white">
       <div className="container-page grid gap-8 py-12 sm:grid-cols-2">
         <div>
-          <p className="text-lg font-semibold">{brand.short}</p>
+          <p className="flex items-center gap-2.5 text-lg font-semibold">
+            <LogoMark className="h-9 w-9 flex-none rounded-[9px] ring-1 ring-white/30" />
+            <span>{brand.short}</span>
+          </p>
           <p className="mt-1 text-white/85">{content.hero.specialty}</p>
           <p className="mt-4 text-white/85">{clinic?.address}</p>
           <p className="text-white/85">
@@ -63,9 +67,23 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-white/15 safe-bottom">
-        <p className="container-page py-5 text-sm text-white/80">
-          © {year} {brand.short}. {ui.footer.rights}
-        </p>
+        <div className="container-page flex flex-col gap-3 py-5 text-sm text-white/80 md:pe-20 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {brand.short}. {ui.footer.rights}
+          </p>
+          <a
+            href="https://jebrantech.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[44px] items-center gap-2 text-white/90 hover:text-white"
+          >
+            <span>{ui.footer.builtBy}</span>
+            <JTMark className="h-7 w-7 flex-none rounded-md ring-1 ring-white/25" />
+            <span lang="en" className="font-medium text-white underline-offset-4 hover:underline">
+              JT Web Services
+            </span>
+          </a>
+        </div>
       </div>
     </footer>
   );
