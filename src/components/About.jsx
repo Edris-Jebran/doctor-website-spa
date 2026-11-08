@@ -14,13 +14,13 @@ const About = () => {
           <h2 id="about-title" className="h2">
             {t.title}
           </h2>
-          <p className="mt-5 max-w-measure border-s-4 border-gold ps-4 text-ink md:text-lg">{about.bio}</p>
+          <p className="mt-5 max-w-measure border-s-4 border-accent ps-4 text-ink md:text-lg">{about.bio}</p>
 
           <h3 className="mt-8 text-lg">{t.credentials}</h3>
           <ul className="mt-3 space-y-2">
             {about.credentials.map((c) => (
               <li key={c} className="flex gap-3 text-ink">
-                <span aria-hidden="true" className="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gold/25 text-goldInk">
+                <span aria-hidden="true" className="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-accent/25 text-accentInk">
                   <Icon name="check" className="h-3.5 w-3.5" />
                 </span>
                 <span>{c}</span>

@@ -25,7 +25,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={trackWhatsAppClick}
-            className="btn btn-gold sm:flex-1"
+            className="btn btn-accent sm:flex-1"
           >
             <Icon name="whatsapp" />
             <span>{ui.whatsappLong}</span>
@@ -41,7 +41,7 @@ const Contact = () => {
           <button
             type="button"
             onClick={() => copy(contact.phoneDisplay)}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-md px-3 text-gold hover:underline underline-offset-4"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-md px-3 text-accent hover:underline underline-offset-4"
           >
             <Icon name={copyStatus === 'copied' ? 'check' : 'copy'} className="w-4 h-4" />
             <span>{t.copyPhone}</span>
@@ -53,7 +53,7 @@ const Contact = () => {
         </div>
 
         <p className="mt-6 text-white/85">{contact.abroadNote}</p>
-        <p className="mt-3 border-s-4 border-gold ps-3 text-white">{contact.emergencyNote}</p>
+        <p className="mt-3 border-s-4 border-accent ps-3 text-white">{contact.emergencyNote}</p>
       </div>
     </section>
   );

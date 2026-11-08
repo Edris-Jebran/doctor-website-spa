@@ -4,10 +4,10 @@ import { trackPhoneCall } from '../utils/analytics';
 import { telHref } from '../utils/contactLinks';
 import LanguageToggle from './LanguageToggle.jsx';
 import Icon from './Icon';
-import { LogoMark } from './Logo';
+import { LogoFull, LogoMark } from './Logo';
 
 const Header = () => {
-  const { content } = useLanguage();
+  const { lang, content } = useLanguage();
   const { ui, brand, contact } = content;
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
@@ -37,8 +37,14 @@ const Header = () => {
     <header className="fixed top-0 inset-x-0 z-40 border-b border-primary/10 bg-white/95 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <a href="#main" className="inline-flex min-w-0 items-center gap-2.5 whitespace-nowrap text-base font-bold text-primary sm:text-lg">
-          <LogoMark className="h-9 w-9 flex-none" />
-          <span>{brand.short}</span>
+          {lang === 'en' ? (
+            <LogoFull alt={brand.short} className="h-10 w-auto flex-none" />
+          ) : (
+            <>
+              <LogoMark className="h-10 w-auto flex-none" />
+              <span>{brand.short}</span>
+            </>
+          )}
         </a>
 
         <nav className="hidden md:flex items-center gap-1 text-ink" aria-label={ui.menu}>

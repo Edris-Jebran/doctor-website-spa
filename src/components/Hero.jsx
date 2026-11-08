@@ -45,7 +45,7 @@ const Hero = () => {
             width="960"
             height="1280"
             fetchPriority="high"
-            className="aspect-[4/5] w-full rounded-xl object-cover ring-2 ring-gold/80 ring-offset-2 ring-offset-primary md:mx-auto md:max-w-md md:rounded-2xl md:ring-offset-8"
+            className="aspect-[4/5] w-full rounded-xl object-cover ring-2 ring-accent/80 ring-offset-2 ring-offset-primary md:mx-auto md:max-w-md md:rounded-2xl md:ring-offset-8"
             style={{ objectPosition: '50% 20%' }}
           />
         </picture>
@@ -56,12 +56,12 @@ const Hero = () => {
         </div>
 
         <div className="col-span-2 row-start-2 md:col-span-1 md:col-start-1 md:self-start">
-          <p className="text-gold">{hero.since}</p>
+          <p className="text-accent">{hero.since}</p>
 
           <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm text-white">
             <span
               aria-hidden="true"
-              className={`h-2 w-2 rounded-full ${status?.state === 'open' ? 'bg-gold' : 'bg-white/60'} ${status ? '' : 'invisible'}`}
+              className={`h-2 w-2 rounded-full ${status?.state === 'open' ? 'bg-accent' : 'bg-white/60'} ${status ? '' : 'invisible'}`}
             />
             <span>{statusText}</span>
           </p>
@@ -72,7 +72,7 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackAppointmentClick('hero_whatsapp')}
-              className="btn btn-gold"
+              className="btn btn-accent"
             >
               <Icon name="whatsapp" />
               <span>{ui.whatsappLong}</span>
@@ -86,7 +86,7 @@ const Hero = () => {
 
           <a
             href="#surgery"
-            className="mt-4 inline-flex min-h-[44px] items-center text-white underline decoration-gold decoration-2 underline-offset-8"
+            className="mt-4 inline-flex min-h-[44px] items-center text-white underline decoration-accent decoration-2 underline-offset-8"
           >
             {ui.seeProcedures}
           </a>

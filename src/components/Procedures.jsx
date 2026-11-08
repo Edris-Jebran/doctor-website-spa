@@ -89,7 +89,7 @@ const Procedures = () => {
               if (group.length === 0) return null;
               return (
                 <div key={specialty} className="mt-6 first:mt-2">
-                  <h4 id={`group-${specialty}`} className="inline-block border-b-2 border-gold pb-0.5 text-base font-bold text-goldInk">
+                  <h4 id={`group-${specialty}`} className="inline-block border-b-2 border-accent pb-0.5 text-base font-bold text-accentInk">
                     {t[specialty]}
                   </h4>
                   <ul aria-labelledby={`group-${specialty}`} className="mt-3 grid items-start gap-2 md:grid-cols-2">

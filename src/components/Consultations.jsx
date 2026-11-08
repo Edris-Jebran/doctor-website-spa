@@ -15,8 +15,8 @@ const Consultations = () => {
         </h2>
         <p className="mt-3 max-w-measure text-steel">{t.intro}</p>
         <ol className="relative mt-10 grid gap-8 md:grid-cols-3 md:gap-10">
-          <span aria-hidden="true" className="absolute bottom-6 start-5 top-6 w-0.5 bg-gold/50 md:hidden" />
-          <span aria-hidden="true" className="absolute end-[16%] start-[16%] top-5 hidden h-0.5 bg-gold/50 md:block" />
+          <span aria-hidden="true" className="absolute bottom-6 start-5 top-6 w-0.5 bg-accent/50 md:hidden" />
+          <span aria-hidden="true" className="absolute end-[16%] start-[16%] top-5 hidden h-0.5 bg-accent/50 md:block" />
           {content.consultations.map((c, i) => (
             <li key={c.id} className="relative flex gap-4 md:flex-col md:items-center md:text-center">
               <span className="relative z-10 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-primary text-lg font-bold text-white ring-4 ring-white">

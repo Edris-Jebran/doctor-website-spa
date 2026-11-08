@@ -36,6 +36,13 @@ test('call link dials the number without spaces', () => {
 test('brand link shows the logo mark without changing its name', () => {
   const { container } = renderHeader();
   const brand = screen.getByRole('link', { name: 'داکتر احسان جبران' });
-  expect(brand.querySelector('svg[data-logo="mark"]')).not.toBeNull();
+  expect(brand.querySelector('img[data-logo="mark"]')).not.toBeNull();
   expect(container).toBeTruthy();
+});
+
+test('in English the brand link is the full clinic logo, named by its alt text', () => {
+  window.history.replaceState({}, '', '/en/');
+  renderHeader();
+  const brand = screen.getByRole('link', { name: 'Dr. Ehsan Jebran' });
+  expect(brand.querySelector('img[data-logo="full"]')).not.toBeNull();
 });

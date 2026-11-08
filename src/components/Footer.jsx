@@ -21,7 +21,7 @@ const Footer = () => {
       <div className="container-page grid gap-8 py-12 sm:grid-cols-2">
         <div>
           <p className="flex items-center gap-2.5 text-lg font-bold">
-            <LogoMark className="h-9 w-9 flex-none rounded-[11px] ring-1 ring-white/30" />
+            <span className="flex-none rounded-lg bg-white p-1"><LogoMark className="h-9 w-auto" /></span>
             <span>{brand.short}</span>
           </p>
           <p className="mt-1 text-white/85">{content.hero.specialty}</p>
