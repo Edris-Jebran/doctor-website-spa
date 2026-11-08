@@ -337,7 +337,8 @@
       "whatsappMessage": "سلام داکتر صاحب، می‌خواهم دربارهٔ وقت ملاقات بپرسم.",
       "whatsappXrayMessage": "سلام داکتر صاحب، عکس اکسری یا راپور خود را می‌فرستم. آیا این را تداوی می‌کنید؟",
       "abroadNote": "اگر از خارج تماس می‌گیرید، واتساپ ساده‌ترین راه تماس است.",
-      "emergencyNote": "در حالت عاجل، به نزدیک‌ترین بخش عاجل شفاخانه مراجعه کنید."
+      "emergencyNote": "در حالت عاجل، به نزدیک‌ترین بخش عاجل شفاخانه مراجعه کنید.",
+      "whatsappProcedureMessage": "سلام داکتر صاحب، دربارهٔ «{name}» سوال دارم."
     },
     "ui": {
       "nav": {
@@ -370,7 +371,8 @@
         "general": "جراحی عمومی",
         "notSure": "مطمئن نیستید که داکتر مشکل شما را تداوی می‌کند؟",
         "xrayCta": "عکس اکسری یا راپور خود را بفرستید",
-        "count": "{n} عملیات"
+        "count": "{n} عملیات",
+        "askAbout": "دربارهٔ این عملیات در واتساپ بپرسید"
       },
       "consultations": {
         "title": "معاینه در کلینیک",
@@ -751,7 +753,8 @@
       "whatsappMessage": "Salaam Dr. Sahib, I would like to ask about an appointment.",
       "whatsappXrayMessage": "Salaam Dr. Sahib, I am sending a photo of my X-ray or report. Can you treat this?",
       "abroadNote": "Calling from abroad? WhatsApp is the easiest way to reach us.",
-      "emergencyNote": "For a medical emergency, go to the nearest hospital emergency department."
+      "emergencyNote": "For a medical emergency, go to the nearest hospital emergency department.",
+      "whatsappProcedureMessage": "Salaam Dr. Sahib, I have a question about {name}."
     },
     "ui": {
       "nav": {
@@ -784,7 +787,8 @@
         "general": "General surgery",
         "notSure": "Not sure if he treats your problem?",
         "xrayCta": "Send a photo of your X-ray or report",
-        "count": "{n} operations"
+        "count": "{n} operations",
+        "askAbout": "Ask about this on WhatsApp"
       },
       "consultations": {
         "title": "Clinic visits",

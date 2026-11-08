@@ -135,7 +135,7 @@ const Locations = () => {
                 </ul>
               </article>
             ) : (
-              <article key={loc.name} className="self-start rounded-xl bg-primary p-5 text-white sm:p-6 on-dark">
+              <article key={loc.name} className="girih self-start rounded-xl bg-primary p-5 text-white sm:p-6 on-dark">
                 <div className="flex items-center gap-3">
                   <Icon name="hospital" className="w-6 h-6" />
                   <h3 className="text-lg text-white">{loc.name}</h3>

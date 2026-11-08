@@ -10,6 +10,7 @@ const Procedures = () => {
   const { regions, procedures, contact } = content;
   const t = content.ui.procedures;
   const [active, setActive] = useState(null);
+  const [open, setOpen] = useState(null);
   const listTop = useRef(null);
 
   // When the filter bar is stuck and the list gets shorter, bring the list's start back into view.
@@ -45,8 +46,8 @@ const Procedures = () => {
             revealList();
           }
         }}
-        className={`min-h-[44px] flex-none whitespace-nowrap rounded-md border px-4 transition-colors ${
-          pressed ? 'border-primary bg-primary text-white' : 'border-primary/30 bg-white text-ink hover:border-primary'
+        className={`min-h-[44px] flex-none whitespace-nowrap rounded-full border px-4 transition-colors ${
+          pressed ? 'border-primary bg-primary text-white' : 'border-primary/20 bg-white text-ink hover:border-primary'
         }`}
       >
         {label}
@@ -55,7 +56,7 @@ const Procedures = () => {
   };
 
   return (
-    <section id="surgery" className="section bg-white" aria-labelledby="surgery-title">
+    <section id="surgery" className="section bg-muted" aria-labelledby="surgery-title">
       <div className="container-page">
         <h2 id="surgery-title" className="h2">
           {t.title}
@@ -74,7 +75,7 @@ const Procedures = () => {
             <div
               role="group"
               aria-labelledby="filter-title"
-              className="sticky top-16 z-20 -mx-5 mt-3 flex gap-2 overflow-x-auto border-b border-primary/10 bg-white px-5 py-2 [scrollbar-width:none] md:static md:mx-0 md:flex-wrap md:overflow-visible md:border-0 md:px-0 md:py-0"
+              className="sticky top-16 z-20 -mx-5 mt-3 flex gap-2 overflow-x-auto border-b border-primary/10 bg-muted px-5 py-2 [scrollbar-width:none] md:static md:mx-0 md:flex-wrap md:overflow-visible md:border-0 md:px-0 md:py-0"
             >
               {chip(null, t.all)}
               {regions.map((r) => chip(r.id, r.label))}
@@ -91,13 +92,42 @@ const Procedures = () => {
                   <h4 id={`group-${specialty}`} className="inline-block border-b-2 border-gold pb-0.5 text-base font-bold text-goldInk">
                     {t[specialty]}
                   </h4>
-                  <ul aria-labelledby={`group-${specialty}`} className="mt-2 divide-y divide-primary/10 border-y border-primary/10">
-                    {group.map((p) => (
-                      <li key={p.id} className="py-3.5">
-                        <span className="font-bold text-ink">{p.name}</span>
-                        <p className="mt-0.5 max-w-measure text-steel">{p.plain}</p>
-                      </li>
-                    ))}
+                  <ul aria-labelledby={`group-${specialty}`} className="mt-3 grid items-start gap-2 md:grid-cols-2">
+                    {group.map((p) => {
+                      const isOpen = open === p.id;
+                      return (
+                        <li key={p.id} className={`rounded-lg border bg-white transition-colors ${isOpen ? 'border-primary' : 'border-primary/15'}`}>
+                          <button
+                            type="button"
+                            aria-expanded={isOpen}
+                            aria-controls={`op-${p.id}`}
+                            onClick={() => {
+                              setOpen(isOpen ? null : p.id);
+                              if (!isOpen) trackServiceClick(`procedure_${p.id}`);
+                            }}
+                            className="flex min-h-[52px] w-full items-center gap-3 px-4 py-2.5 text-start font-bold text-ink"
+                          >
+                            <span className="flex-1">{p.name}</span>
+                            <Icon name="chevron" className={`h-4 w-4 flex-none text-primary transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          {isOpen && (
+                            <div id={`op-${p.id}`} className="px-4 pb-4">
+                              <p className="text-steel">{p.plain}</p>
+                              <a
+                                href={whatsappHref(contact, contact.whatsappProcedureMessage.replace('{name}', p.name))}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={trackWhatsAppClick}
+                                className="mt-2 inline-flex min-h-[44px] items-center gap-2 font-bold text-primary underline-offset-4 hover:underline"
+                              >
+                                <Icon name="whatsapp" className="h-5 w-5" />
+                                <span>{t.askAbout}</span>
+                              </a>
+                            </div>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               );

@@ -80,3 +80,14 @@ test('a group with no matching operations is hidden', () => {
   expect(screen.queryByRole('list', { name: 'Orthopedic' })).not.toBeInTheDocument();
   expect(screen.getByRole('list', { name: 'General surgery' })).toBeInTheDocument();
 });
+
+test('an operation opens to show what it is and a WhatsApp link about it', () => {
+  renderEn();
+  const toggle = within(section()).getByRole('button', { name: 'Hernia repair' });
+  expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  expect(within(section()).queryByRole('link', { name: /Ask about this on WhatsApp/ })).toBeNull();
+  userEvent.click(toggle);
+  expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  const ask = within(section()).getByRole('link', { name: /Ask about this on WhatsApp/ });
+  expect(decodeURIComponent(ask.getAttribute('href'))).toMatch('Hernia repair');
+});

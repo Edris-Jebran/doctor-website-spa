@@ -17,7 +17,7 @@ const Footer = () => {
   ].filter((s) => s.href);
 
   return (
-    <footer className="on-dark bg-primary text-white">
+    <footer className="on-dark bg-ink text-white">
       <div className="container-page grid gap-8 py-12 sm:grid-cols-2">
         <div>
           <p className="flex items-center gap-2.5 text-lg font-bold">

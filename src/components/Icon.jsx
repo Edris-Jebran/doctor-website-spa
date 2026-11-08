@@ -11,6 +11,7 @@ const STROKE = {
   menu: 'M4 6h16M4 12h16M4 18h16',
   close: 'M6 18L18 6M6 6l12 12',
   'arrow-up': 'M5 15l7-7 7 7',
+  chevron: 'M6 9l6 6 6-6',
   hospital:
     'M4 21V5a2 2 0 012-2h12a2 2 0 012 2v16M2 21h20M12 7v6M9 10h6M10 21v-4h4v4',
   clinic: 'M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V10z',
