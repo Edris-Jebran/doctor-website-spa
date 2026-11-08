@@ -1,115 +1,93 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { trackPhoneCall } from '../utils/analytics';
+import { telHref } from '../utils/contactLinks';
 import LanguageToggle from './LanguageToggle.jsx';
+import Icon from './Icon';
 
 const Header = () => {
-  const { currentLanguage } = useLanguage();
+  const { content } = useLanguage();
+  const { ui, brand, contact } = content;
   const [open, setOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
-  const mobileToggleRef = useRef(null);
+  const menuRef = useRef(null);
+  const toggleRef = useRef(null);
 
   const links = [
-    { href: '#services', label: currentLanguage === 'fa' ? 'خدمات' : 'Services' },
-    { href: '#clinic-info', label: currentLanguage === 'fa' ? 'ساعات و آدرس' : 'Hours & Address' },
-    { href: '#contact', label: currentLanguage === 'fa' ? 'تماس' : 'Contact' },
+    { href: '#surgery', label: ui.nav.surgery },
+    { href: '#about', label: ui.nav.about },
+    { href: '#locations', label: ui.nav.locations },
+    { href: '#contact', label: ui.nav.contact },
   ];
 
   useEffect(() => {
-    if (!open) {
-      return;
-    }
-    const firstLink = mobileMenuRef.current?.querySelector('a, button');
-    if (firstLink instanceof HTMLElement) {
-      firstLink.focus();
-    }
-
+    if (!open) return undefined;
+    const first = menuRef.current?.querySelector('a, button');
+    if (first instanceof HTMLElement) first.focus();
     const onKeyDown = (event) => {
-      if (event.key !== 'Escape') {
-        return;
-      }
+      if (event.key !== 'Escape') return;
       setOpen(false);
-      if (mobileToggleRef.current instanceof HTMLElement) {
-        mobileToggleRef.current.focus();
-      }
+      toggleRef.current?.focus();
     };
-
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [open]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40 bg-primary/70 backdrop-blur border-b border-white/10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-        <a href="#main" className="text-white font-semibold text-lg tracking-tight">
-          {currentLanguage === 'fa' ? 'کلینیک دکتر وردک' : 'Dr. Wardak Clinic'}
+    <header className="fixed top-0 inset-x-0 z-40 border-b border-primary/10 bg-white/95 backdrop-blur">
+      <div className="container-page flex h-16 items-center justify-between gap-4">
+        <a href="#main" className="text-lg font-semibold text-primary">
+          {brand.short}
         </a>
 
-        <nav className="hidden sm:flex items-center gap-4 text-white/80 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-1 text-ink" aria-label={ui.menu}>
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="hover:text-white transition-colors"
+              className="inline-flex min-h-[44px] items-center rounded-md px-3 hover:text-primary hover:underline underline-offset-4"
             >
               {link.label}
             </a>
           ))}
-          <LanguageToggle size="compact" />
-          <a
-            href="tel:+93 78 915 8627"
-            onClick={trackPhoneCall}
-            className="btn bg-white text-primary px-4 py-2 rounded-lg font-semibold shadow hover:bg-muted transition"
-          >
-            <span>📞</span>
-            <span>{currentLanguage === 'fa' ? 'تماس' : 'Call'}</span>
+          <LanguageToggle className="text-lapis" />
+          <a href={telHref(contact)} onClick={trackPhoneCall} className="btn btn-primary ms-2">
+            <Icon name="phone" className="w-4 h-4" />
+            <span>{ui.call}</span>
           </a>
         </nav>
 
-        <button
-          ref={mobileToggleRef}
-          type="button"
-          className="sm:hidden text-white/80 border border-white/20 rounded-lg px-3 py-2 text-sm"
-          onClick={() => setOpen(!open)}
-          aria-expanded={open}
-          aria-controls="mobile-nav-panel"
-          aria-label={currentLanguage === 'fa' ? 'منو' : 'Menu'}
-        >
-          ☰
-        </button>
+        <div className="flex items-center gap-1 md:hidden">
+          <LanguageToggle className="text-lapis" />
+          <button
+            ref={toggleRef}
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-primary"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-controls="mobile-nav-panel"
+            aria-label={open ? ui.closeMenu : ui.menu}
+          >
+            <Icon name={open ? 'close' : 'menu'} className="w-6 h-6" />
+          </button>
+        </div>
       </div>
 
       {open && (
-        <div
-          id="mobile-nav-panel"
-          ref={mobileMenuRef}
-          className="sm:hidden bg-primary/90 backdrop-blur border-t border-white/10"
-        >
-          <div className="px-4 py-3 space-y-2 text-white/90">
-            <LanguageToggle size="compact" />
+        <nav id="mobile-nav-panel" ref={menuRef} className="md:hidden border-t border-primary/10 bg-white" aria-label={ui.menu}>
+          <ul className="container-page py-2">
             {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block py-2"
-              >
-                {link.label}
-              </a>
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-[48px] items-center text-lg text-ink"
+                >
+                  {link.label}
+                </a>
+              </li>
             ))}
-            <a
-              href="tel:+93 78 915 8627"
-              onClick={(e) => {
-                trackPhoneCall();
-                setOpen(false);
-              }}
-              className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-lg font-semibold shadow w-full justify-center"
-            >
-              <span>📞</span>
-              <span>{currentLanguage === 'fa' ? 'تماس' : 'Call'}</span>
-            </a>
-          </div>
-        </div>
+          </ul>
+        </nav>
       )}
     </header>
   );
