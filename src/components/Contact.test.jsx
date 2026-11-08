@@ -42,10 +42,10 @@ test('footer social links have names', () => {
   expect(screen.getByRole('link', { name: 'Instagram' })).toBeInTheDocument();
 });
 
-test('locations show clinic and Mawla Ali Hospital with one directions button', () => {
+test('locations show clinic and Mawla Ali Hospital, each with its own directions button', () => {
   const { container } = wrap(<Locations />);
   expect(screen.getByRole('heading', { name: 'Mawla Ali Hospital' })).toBeInTheDocument();
-  expect(screen.getAllByRole('link', { name: /Get directions/ })).toHaveLength(1);
+  expect(screen.getAllByRole('link', { name: /Get directions/ })).toHaveLength(2);
   expect(container).not.toHaveTextContent(/Need Directions|Find Us on Google Maps/);
 });
 

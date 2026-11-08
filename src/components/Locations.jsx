@@ -147,6 +147,18 @@ const Locations = () => {
                     <span>{loc.address}</span>
                   </p>
                 )}
+                {loc.coords && (
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${loc.coords.lat},${loc.coords.lng}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackMapInteraction('hospital_directions')}
+                    className="btn btn-outline-light mt-5"
+                  >
+                    <Icon name="map" />
+                    <span>{t.directions}</span>
+                  </a>
+                )}
               </article>
             )
           )}

@@ -312,6 +312,10 @@
         "type": "hospital",
         "name": "شفاخانهٔ مولا علی",
         "address": "سرک عمومی چهارراهی قمبر به طرف خوشحال خان و باغ بالا، پیش از تانک تیل خوشحال خان، کابل",
+        "coords": {
+          "lat": 34.53086620344728,
+          "lng": 69.10817832799977
+        },
         "note": "عملیات‌ها در این‌جا انجام می‌شود."
       }
     ],
@@ -729,6 +733,10 @@
         "type": "hospital",
         "name": "Mawla Ali Hospital",
         "address": "Main road from Chahrahi Qambar toward Khushal Khan and Bagh-e Bala, before the Khushal Khan fuel station, Kabul",
+        "coords": {
+          "lat": 34.53086620344728,
+          "lng": 69.10817832799977
+        },
         "note": "Operations are performed here."
       }
     ],
