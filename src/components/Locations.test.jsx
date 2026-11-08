@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import Locations from './Locations';
 import { LanguageProvider } from '../context/LanguageContext.jsx';
 import siteContent from '../data/siteContent.json';
@@ -26,4 +26,18 @@ test('the hospital card has directions to the hospital pin', () => {
   const link = card.querySelector('a[href^="https://www.google.com/maps/dir/"]');
   expect(link).not.toBeNull();
   expect(link.getAttribute('href')).toContain(`${hospital.coords.lat},${hospital.coords.lng}`);
+});
+
+test('the hospital card has its own map pin, loaded on tap', () => {
+  render(
+    <LanguageProvider>
+      <Locations />
+    </LanguageProvider>
+  );
+  const hospital = siteContent.fa.locations.find((l) => l.type === 'hospital');
+  const card = screen.getByRole('heading', { name: hospital.name }).closest('article');
+  fireEvent.click(within(card).getByRole('button', { name: siteContent.fa.ui.locations.showMap }));
+  const map = card.querySelector('iframe');
+  expect(map.getAttribute('src')).toContain(`q=${hospital.coords.lat},${hospital.coords.lng}`);
+  expect(map.getAttribute('title')).toContain(hospital.name);
 });

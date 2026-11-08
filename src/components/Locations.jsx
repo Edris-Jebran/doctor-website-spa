@@ -9,7 +9,7 @@ const isWideScreen = () =>
   typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(min-width: 768px)').matches;
 
 // Desktop: load when scrolled near. Phones: wait for a tap, a Google Maps embed costs ~1 MB of data.
-const LazyMap = ({ coords, t, lang }) => {
+const LazyMap = ({ coords, t, lang, title = t.mapTitle }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -43,7 +43,7 @@ const LazyMap = ({ coords, t, lang }) => {
     <div ref={ref} className="h-56 overflow-hidden rounded-md bg-muted sm:h-64">
       {visible ? (
         <iframe
-          title={t.mapTitle}
+          title={title}
           src={`https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=16&hl=${lang === 'fa' ? 'fa' : 'en'}&output=embed`}
           className="h-full w-full border-0"
           loading="lazy"
@@ -146,6 +146,11 @@ const Locations = () => {
                     <Icon name="map" className="mt-1 w-5 h-5 flex-none text-accent" />
                     <span>{loc.address}</span>
                   </p>
+                )}
+                {loc.coords && (
+                  <div className="mt-5">
+                    <LazyMap coords={loc.coords} t={t} lang={lang} title={`${t.mapOf} ${loc.name}`} />
+                  </div>
                 )}
                 {loc.coords && (
                   <a

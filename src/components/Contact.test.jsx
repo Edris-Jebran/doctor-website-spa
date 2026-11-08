@@ -61,6 +61,8 @@ test('on phones the map waits for a tap (saves mobile data)', () => {
   // setupTests' matchMedia reports no match, i.e. a phone-sized screen
   const { container } = wrap(<Locations />);
   expect(container.querySelector('iframe')).toBeNull();
-  userEvent.click(screen.getByRole('button', { name: 'Show map' }));
-  expect(container.querySelector('iframe')).not.toBeNull();
+  const buttons = screen.getAllByRole('button', { name: 'Show map' });
+  expect(buttons).toHaveLength(2);
+  userEvent.click(buttons[0]);
+  expect(container.querySelectorAll('iframe')).toHaveLength(1);
 });
