@@ -41,3 +41,19 @@ test('the hospital card has its own map pin, loaded on tap', () => {
   expect(map.getAttribute('src')).toContain(`q=${hospital.coords.lat},${hospital.coords.lng}`);
   expect(map.getAttribute('title')).toContain(hospital.name);
 });
+
+test('clinic and hospital cards share one style and the same actions', () => {
+  render(
+    <LanguageProvider>
+      <Locations />
+    </LanguageProvider>
+  );
+  const { ui, locations } = siteContent.fa;
+  const cards = locations.map((loc) => screen.getByRole('heading', { name: loc.name }).closest('article'));
+  expect(cards[0].className).toBe(cards[1].className);
+  cards.forEach((card) => {
+    expect(within(card).getByRole('button', { name: ui.locations.showMap })).toBeInTheDocument();
+    expect(within(card).getByRole('link', { name: ui.locations.directions })).toBeInTheDocument();
+    expect(within(card).getByRole('button', { name: ui.locations.copyAddress })).toBeInTheDocument();
+  });
+});
