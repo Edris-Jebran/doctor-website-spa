@@ -1,100 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@600&family=Vazirmatn:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* fixed header */
+  }
 
-body {
-  margin: 0;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #0c1222;
-  color: #0f172a;
-}
+  body {
+    margin: 0;
+    @apply bg-muted text-ink font-sans text-base;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-h1, h2, h3, h4 {
-  font-family: 'Space Grotesk', 'Manrope', 'Segoe UI', sans-serif;
-  letter-spacing: -0.01em;
-}
+  [dir='rtl'] body {
+    @apply font-arabic;
+    line-height: 1.8;
+  }
 
-.animate-fade-in {
-  animation: fade-in 0.4s ease forwards;
-}
+  h1,
+  h2,
+  h3 {
+    @apply text-primary font-semibold;
+    line-height: 1.25;
+  }
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  [dir='rtl'] h1,
+  [dir='rtl'] h2,
+  [dir='rtl'] h3 {
+    line-height: 1.5;
+  }
 
-.ltr-number {
-  direction: ltr;
-  unicode-bidi: bidi-override;
-  display: inline-block;
+  :focus-visible {
+    outline: 3px solid #23408e;
+    outline-offset: 2px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: #9fe3d0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0s !important;
+      animation-duration: 0s !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @layer components {
+  .container-page {
+    @apply max-w-6xl mx-auto px-5 sm:px-6;
+  }
+  .section {
+    @apply py-16 sm:py-20;
+  }
+  .h2 {
+    @apply text-xl sm:text-2xl font-semibold text-primary;
+  }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 font-medium transition-colors;
   }
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 hover:bg-primary/90 shadow;
+    @apply bg-primary text-white hover:bg-[#174a42];
   }
   .btn-secondary {
-    @apply border border-primary text-primary px-6 py-3 hover:bg-primary/5;
+    @apply border border-primary bg-white text-primary hover:bg-muted;
   }
-  .btn-accent {
-    @apply bg-accent text-white px-6 py-3 hover:bg-accent/90;
+  .btn-on-dark {
+    @apply bg-white text-primary hover:bg-muted;
   }
 }
 
-/* Global text wrapping to prevent overflow on mobile */
-p, h1, h2, h3, h4, a, span, li, button, div {
-  overflow-wrap: anywhere;
-  word-break: normal;
-  hyphens: auto;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* Focus outline for better accessibility */
-:focus-visible {
-  outline: 3px solid #005E7A;
-  outline-offset: 2px;
-}
-
-/* Helper to avoid overlap with Sticky CTA on small screens */
-.safe-bottom {
-  padding-bottom: calc(env(safe-area-inset-bottom) + 72px);
-}
-
-/* RTL Support */
-.rtl {
-  direction: rtl;
-  text-align: right;
-  font-family: 'Vazirmatn', 'Tahoma', 'Noto Sans Arabic', sans-serif;
-  font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08";
-  -webkit-font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08";
-  -moz-osx-font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08";
-}
-
-.rtl * {
-  font-family: inherit;
-}
-
-/* RTL form adjustments */
-.rtl input,
-.rtl textarea,
-.rtl select {
-  text-align: right;
+@layer utilities {
+  .break-anywhere {
+    overflow-wrap: anywhere;
+  }
+  .ltr-number {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+  }
+  .safe-bottom {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 76px);
+  }
+  @media (min-width: 640px) {
+    .safe-bottom {
+      padding-bottom: 0;
+    }
+  }
 }

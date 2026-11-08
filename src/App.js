@@ -5,12 +5,10 @@ import Services from './components/Services';
 import ClinicInfo from './components/ClinicInfo';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import MedicalBackground from './components/MedicalBackground';
 import StickyCTA from './components/StickyCTA';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
 import { initializeAnalytics } from './utils/analytics';
-import './App.css';
 import Header from './components/Header';
 
 function AppContent() {
@@ -25,9 +23,6 @@ function AppContent() {
   
   return (
     <div className={`App ${isRTL ? 'rtl' : 'ltr'}`}>
-      {/* Background layer */}
-      <MedicalBackground />
-
       <Header />
       <main id="main" className="safe-bottom pt-20 sm:pt-24">
         <Hero 
