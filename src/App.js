@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
-import Services from './components/Services';
+import Procedures from './components/Procedures';
+import Consultations from './components/Consultations';
 import ClinicInfo from './components/ClinicInfo';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
