@@ -7,8 +7,8 @@ const SHAPES = {
   abdomen: [<path key="a" d="M62 150 L138 150 L136 218 L64 218 Z" />],
   groin: [<path key="g" d="M64 218 L136 218 L128 248 L72 248 Z" />],
   arms: [
-    <path key="al" d="M64 84 L44 92 L30 200 L26 252 L40 254 L48 202 L62 120 Z" />,
-    <path key="ar" d="M136 84 L156 92 L170 200 L174 252 L160 254 L152 202 L138 120 Z" />,
+    <path key="al" d="M60 86 L44 92 L30 200 L26 252 L40 254 L48 202 L60 128 Z" />,
+    <path key="ar" d="M140 86 L156 92 L170 200 L174 252 L160 254 L152 202 L140 128 Z" />,
   ],
   legs: [
     <path key="ll" d="M72 248 L98 248 L96 400 L76 400 Z" />,

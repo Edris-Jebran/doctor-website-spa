@@ -49,7 +49,6 @@ export const LanguageProvider = ({ children }) => {
 
   const value = {
     lang,
-    currentLanguage: lang,
     isRTL,
     content: siteContent[lang],
     setLang,
