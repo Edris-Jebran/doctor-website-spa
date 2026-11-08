@@ -4,16 +4,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1E5B52', // Scrub: operating-room drape green
-        lapis: '#23408E', // Badakhshan lapis: links, focus on light
-        ink: '#14211F', // body text
-        steel: '#5B6B69', // secondary text
-        muted: '#F4F7F6', // Ward: page background
-        mint: '#9FE3D0', // focus ring on dark bands
+        primary: '#1F3A93', // Badakhshan lapis: brand, buttons, dark bands
+        lapis: '#1F3A93', // links and focus on light (same lapis)
+        ink: '#121A33', // body text
+        steel: '#4F5A73', // secondary text
+        muted: '#F5F7FC', // page background
+        gold: '#E0B341', // accent: small marks, focus ring on dark bands
+        goldInk: '#7A5A00', // gold-family text on white (AA)
       },
       fontFamily: {
-        sans: ['"IBM Plex Sans"', '"IBM Plex Sans Arabic"', 'system-ui', 'sans-serif'],
-        arabic: ['"IBM Plex Sans Arabic"', '"IBM Plex Sans"', 'Tahoma', 'sans-serif'],
+        sans: ['Vazirmatn', 'system-ui', 'sans-serif'],
+        arabic: ['Vazirmatn', 'Tahoma', 'sans-serif'],
       },
       fontSize: {
         sm: '0.875rem',

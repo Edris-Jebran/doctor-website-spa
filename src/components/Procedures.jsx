@@ -88,13 +88,13 @@ const Procedures = () => {
               if (group.length === 0) return null;
               return (
                 <div key={specialty} className="mt-6 first:mt-2">
-                  <h4 id={`group-${specialty}`} className="text-base font-semibold text-primary">
+                  <h4 id={`group-${specialty}`} className="inline-block border-b-2 border-gold pb-0.5 text-base font-bold text-goldInk">
                     {t[specialty]}
                   </h4>
                   <ul aria-labelledby={`group-${specialty}`} className="mt-2 divide-y divide-primary/10 border-y border-primary/10">
                     {group.map((p) => (
                       <li key={p.id} className="py-3.5">
-                        <span className="font-semibold text-ink">{p.name}</span>
+                        <span className="font-bold text-ink">{p.name}</span>
                         <p className="mt-0.5 max-w-measure text-steel">{p.plain}</p>
                       </li>
                     ))}

@@ -124,7 +124,7 @@ const Locations = () => {
                   </span>
                 </div>
 
-                <h4 className="mt-6 font-semibold text-primary">{t.whatToBring}</h4>
+                <h4 className="mt-6 font-bold text-primary">{t.whatToBring}</h4>
                 <ul className="mt-2 space-y-1">
                   {whatToBring.map((item) => (
                     <li key={item} className="flex gap-3 text-ink">

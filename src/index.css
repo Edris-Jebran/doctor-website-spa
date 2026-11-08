@@ -31,7 +31,7 @@
   h1,
   h2,
   h3 {
-    @apply text-primary font-semibold;
+    @apply text-primary font-bold;
     line-height: 1.25;
   }
 
@@ -42,12 +42,12 @@
   }
 
   :focus-visible {
-    outline: 3px solid #23408e;
+    outline: 3px solid #1f3a93;
     outline-offset: 2px;
   }
 
   .on-dark :focus-visible {
-    outline-color: #9fe3d0;
+    outline-color: #e0b341;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -71,10 +71,10 @@
     @apply py-16 sm:py-20;
   }
   .h2 {
-    @apply text-xl sm:text-2xl font-semibold text-primary;
+    @apply text-xl sm:text-2xl font-bold text-primary;
   }
   .btn {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 font-semibold transition-colors;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 font-bold transition-colors;
   }
   .btn-primary {
     @apply bg-primary text-white hover:bg-[#174a42];
