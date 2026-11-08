@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 inset-x-0 z-40 border-b border-primary/10 bg-white/95 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        <a href="#main" className="inline-flex items-center gap-2.5 text-lg font-semibold text-primary">
+        <a href="#main" className="inline-flex min-w-0 items-center gap-2.5 whitespace-nowrap text-base font-semibold text-primary sm:text-lg">
           <LogoMark className="h-9 w-9 flex-none" />
           <span>{brand.short}</span>
         </a>

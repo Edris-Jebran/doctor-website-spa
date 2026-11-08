@@ -16,12 +16,12 @@ module.exports = {
         arabic: ['"IBM Plex Sans Arabic"', '"IBM Plex Sans"', 'Tahoma', 'sans-serif'],
       },
       fontSize: {
-        sm: '14px',
-        base: '16px',
-        lg: '20px',
-        xl: '25px',
-        '2xl': '31px',
-        '3xl': '39px',
+        sm: '0.875rem',
+        base: '1rem',
+        lg: '1.25rem',
+        xl: '1.5625rem',
+        '2xl': '1.9375rem',
+        '3xl': '2.4375rem',
       },
       maxWidth: {
         measure: '70ch',

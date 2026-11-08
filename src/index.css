@@ -16,6 +16,13 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Dari script reads smaller than Latin at the same size: 17px base on phones. */
+  @media (max-width: 767px) {
+    html[dir='rtl'] {
+      font-size: 106.25%;
+    }
+  }
+
   [dir='rtl'] body {
     @apply font-arabic;
     line-height: 1.8;
@@ -67,7 +74,7 @@
     @apply text-xl sm:text-2xl font-semibold text-primary;
   }
   .btn {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 font-medium transition-colors;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 font-semibold transition-colors;
   }
   .btn-primary {
     @apply bg-primary text-white hover:bg-[#174a42];

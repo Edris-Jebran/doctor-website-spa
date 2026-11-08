@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { trackServiceClick, trackWhatsAppClick } from '../utils/analytics';
 import { whatsappHref } from '../utils/contactLinks';
@@ -10,10 +10,20 @@ const Procedures = () => {
   const { regions, procedures, contact } = content;
   const t = content.ui.procedures;
   const [active, setActive] = useState(null);
+  const listTop = useRef(null);
+
+  // When the filter bar is stuck and the list gets shorter, bring the list's start back into view.
+  const revealList = () => {
+    const el = listTop.current;
+    if (el && el.getBoundingClientRect().top < 0) {
+      window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - 140 });
+    }
+  };
 
   const select = (id) => {
     const next = id === active ? null : id;
     setActive(next);
+    revealList();
     if (next) trackServiceClick(`region_${next}`);
   };
 
@@ -27,8 +37,15 @@ const Procedures = () => {
         key={id ?? 'all'}
         type="button"
         aria-pressed={pressed}
-        onClick={() => (id ? select(id) : setActive(null))}
-        className={`min-h-[44px] rounded-md border px-4 transition-colors ${
+        onClick={() => {
+          if (id) {
+            select(id);
+          } else {
+            setActive(null);
+            revealList();
+          }
+        }}
+        className={`min-h-[44px] flex-none whitespace-nowrap rounded-md border px-4 transition-colors ${
           pressed ? 'border-primary bg-primary text-white' : 'border-primary/30 bg-white text-ink hover:border-primary'
         }`}
       >
@@ -50,16 +67,20 @@ const Procedures = () => {
             <BodyMap regions={regions} active={active} onSelect={select} label={t.bodyMap} />
           </div>
 
-          <div>
+          <div className="min-w-0">
             <h3 id="filter-title" className="text-lg">
               {t.filterLabel}
             </h3>
-            <div role="group" aria-labelledby="filter-title" className="mt-3 flex flex-wrap gap-2">
+            <div
+              role="group"
+              aria-labelledby="filter-title"
+              className="sticky top-16 z-20 -mx-5 mt-3 flex gap-2 overflow-x-auto border-b border-primary/10 bg-white px-5 py-2 [scrollbar-width:none] md:static md:mx-0 md:flex-wrap md:overflow-visible md:border-0 md:px-0 md:py-0"
+            >
               {chip(null, t.all)}
               {regions.map((r) => chip(r.id, r.label))}
             </div>
 
-            <p className="mt-6 text-sm text-steel" aria-live="polite">
+            <p ref={listTop} className="mt-4 text-sm text-steel md:mt-6" aria-live="polite">
               {count}
             </p>
             {['orthopedic', 'general'].map((specialty) => {
@@ -73,7 +94,7 @@ const Procedures = () => {
                   <ul aria-labelledby={`group-${specialty}`} className="mt-2 divide-y divide-primary/10 border-y border-primary/10">
                     {group.map((p) => (
                       <li key={p.id} className="py-3.5">
-                        <span className="font-medium text-ink">{p.name}</span>
+                        <span className="font-semibold text-ink">{p.name}</span>
                         <p className="mt-0.5 max-w-measure text-steel">{p.plain}</p>
                       </li>
                     ))}

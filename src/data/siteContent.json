@@ -388,7 +388,9 @@
         "mapTitle": "نقشهٔ کلینیک داکتر احسان جبران",
         "mapLoading": "نقشه بارگذاری می‌شود…",
         "whatToBring": "چه چیزهایی با خود بیاورید",
-        "hours": "ساعات کاری"
+        "hours": "ساعات کاری",
+        "showMap": "نمایش نقشه",
+        "mapDataNote": "نقشه از انترنت موبایل استفاده می‌کند."
       },
       "contact": {
         "title": "تماس",
@@ -800,7 +802,9 @@
         "mapTitle": "Map of Dr. Ehsan Jebran's clinic",
         "mapLoading": "Loading map…",
         "whatToBring": "What to bring",
-        "hours": "Opening hours"
+        "hours": "Opening hours",
+        "showMap": "Show map",
+        "mapDataNote": "The map uses mobile data."
       },
       "contact": {
         "title": "Contact",

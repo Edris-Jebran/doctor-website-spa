@@ -21,7 +21,7 @@ const Footer = () => {
       <div className="container-page grid gap-8 py-12 sm:grid-cols-2">
         <div>
           <p className="flex items-center gap-2.5 text-lg font-semibold">
-            <LogoMark className="h-9 w-9 flex-none rounded-[9px] ring-1 ring-white/30" />
+            <LogoMark className="h-9 w-9 flex-none rounded-full ring-1 ring-white/30" />
             <span>{brand.short}</span>
           </p>
           <p className="mt-1 text-white/85">{content.hero.specialty}</p>
@@ -79,7 +79,7 @@ const Footer = () => {
           >
             <span>{ui.footer.builtBy}</span>
             <JTMark className="h-7 w-7 flex-none rounded-md ring-1 ring-white/25" />
-            <span lang="en" className="font-medium text-white underline-offset-4 hover:underline">
+            <span lang="en" className="font-semibold text-white underline-offset-4 hover:underline">
               JT Web Services
             </span>
           </a>

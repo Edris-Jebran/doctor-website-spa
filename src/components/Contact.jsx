@@ -37,7 +37,7 @@ const Contact = () => {
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-3">
-          <span className="ltr-number text-lg font-medium text-ink">{contact.phoneDisplay}</span>
+          <span className="ltr-number text-lg font-semibold text-ink">{contact.phoneDisplay}</span>
           <button
             type="button"
             onClick={() => copy(contact.phoneDisplay)}

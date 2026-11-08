@@ -5,13 +5,18 @@ import { formatTime } from '../utils/clinicHours';
 import useCopy from '../utils/useCopy';
 import Icon from './Icon';
 
-const LazyMap = ({ coords, title, loadingText, lang }) => {
+const isWideScreen = () =>
+  typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(min-width: 768px)').matches;
+
+// Desktop: load when scrolled near. Phones: wait for a tap, a Google Maps embed costs ~1 MB of data.
+const LazyMap = ({ coords, t, lang }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || typeof IntersectionObserver === 'undefined') {
+    if (!el || !isWideScreen()) return undefined;
+    if (typeof IntersectionObserver === 'undefined') {
       setVisible(true);
       return undefined;
     }
@@ -29,18 +34,29 @@ const LazyMap = ({ coords, title, loadingText, lang }) => {
     return () => observer.disconnect();
   }, []);
 
+  const show = () => {
+    setVisible(true);
+    trackMapInteraction('locations_tap_load_map');
+  };
+
   return (
     <div ref={ref} className="h-56 overflow-hidden rounded-md bg-muted sm:h-64">
       {visible ? (
         <iframe
-          title={title}
+          title={t.mapTitle}
           src={`https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=16&hl=${lang === 'fa' ? 'fa' : 'en'}&output=embed`}
           className="h-full w-full border-0"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
       ) : (
-        <div className="flex h-full items-center justify-center text-sm text-steel">{loadingText}</div>
+        <div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center">
+          <button type="button" onClick={show} className="btn btn-secondary">
+            <Icon name="map" />
+            <span>{t.showMap}</span>
+          </button>
+          <p className="text-sm text-steel">{t.mapDataNote}</p>
+        </div>
       )}
     </div>
   );
@@ -84,7 +100,7 @@ const Locations = () => {
                 </dl>
 
                 <div className="mt-5">
-                  <LazyMap coords={loc.coords} title={t.mapTitle} loadingText={t.mapLoading} lang={lang} />
+                  <LazyMap coords={loc.coords} t={t} lang={lang} />
                 </div>
 
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -108,7 +124,7 @@ const Locations = () => {
                   </span>
                 </div>
 
-                <h4 className="mt-6 font-medium text-primary">{t.whatToBring}</h4>
+                <h4 className="mt-6 font-semibold text-primary">{t.whatToBring}</h4>
                 <ul className="mt-2 space-y-1">
                   {whatToBring.map((item) => (
                     <li key={item} className="flex gap-3 text-ink">

@@ -40,3 +40,12 @@ test('WhatsApp is the primary action', () => {
   const wa = screen.getByRole('link', { name: /پیام در واتساپ/ });
   expect(wa.getAttribute('href')).toMatch(/^https:\/\/wa\.me\/93789158627/);
 });
+
+test('phones get a small photo file', () => {
+  jest.setSystemTime(Date.UTC(2026, 10, 7, 13, 10));
+  const { container } = renderHero();
+  const webp = container.querySelector('source[type="image/webp"]');
+  expect(webp.getAttribute('srcset')).toMatch(/doctorEhsanPhoto-a-480\.webp 480w/);
+  expect(webp.getAttribute('srcset')).toMatch(/doctorEhsanPhoto-a\.webp 960w/);
+  expect(webp.getAttribute('sizes')).toBeTruthy();
+});

@@ -22,7 +22,7 @@ const LanguageToggle = ({ className = '' }) => {
       hrefLang={target === 'fa' ? 'fa-AF' : 'en'}
       onClick={handleClick}
       aria-label={ui.switchLang}
-      className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md px-3 font-medium underline-offset-4 hover:underline ${className}`}
+      className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md px-3 font-semibold underline-offset-4 hover:underline ${className}`}
     >
       <span lang={ui.langButtonLang}>{ui.langButton}</span>
     </a>
