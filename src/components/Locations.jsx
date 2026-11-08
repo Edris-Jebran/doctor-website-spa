@@ -141,6 +141,12 @@ const Locations = () => {
                   <h3 className="text-lg text-white">{loc.name}</h3>
                 </div>
                 <p className="mt-2 text-white/90">{loc.note}</p>
+                {loc.address && (
+                  <p className="mt-4 flex gap-3 text-white">
+                    <Icon name="map" className="mt-1 w-5 h-5 flex-none text-accent" />
+                    <span>{loc.address}</span>
+                  </p>
+                )}
               </article>
             )
           )}

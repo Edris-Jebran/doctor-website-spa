@@ -44,3 +44,10 @@ test('structured data describes the doctor, the clinic and the site', () => {
   ]);
   expect(doc.logo).toBe(`${SITE_URL}/logo512.png`);
 });
+
+test.each(['fa', 'en'])('%s hospital affiliation carries the hospital street address', (lang) => {
+  const hospital = siteContent[lang].locations.find((l) => l.type === 'hospital');
+  const doctor = pageMeta(lang, siteContent[lang]).jsonLd['@graph'].find((n) => n['@type'] === 'Physician');
+  expect(hospital.address).toMatch(lang === 'fa' ? /خوشحال خان/ : /Khushal Khan/);
+  expect(doctor.hospitalAffiliation.address.streetAddress).toBe(hospital.address);
+});

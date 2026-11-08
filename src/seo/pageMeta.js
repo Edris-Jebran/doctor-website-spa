@@ -50,7 +50,12 @@ export function pageMeta(lang, content) {
         hospitalAffiliation: {
           '@type': 'Hospital',
           name: hospital ? hospital.name : 'Mawla Ali Hospital',
-          address: { '@type': 'PostalAddress', addressLocality: 'Kabul', addressCountry: 'AF' },
+          address: {
+            '@type': 'PostalAddress',
+            ...(hospital && hospital.address ? { streetAddress: hospital.address } : {}),
+            addressLocality: 'Kabul',
+            addressCountry: 'AF',
+          },
         },
         worksFor: { '@id': `${SITE_URL}/#clinic` },
         availableService: procedures.map((p) => ({ '@type': 'MedicalProcedure', name: p.name })),
