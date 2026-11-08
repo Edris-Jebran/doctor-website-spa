@@ -1,56 +1,35 @@
 import React, { useEffect } from 'react';
+import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
 import Procedures from './components/Procedures';
 import Consultations from './components/Consultations';
-import ClinicInfo from './components/ClinicInfo';
-import ContactForm from './components/ContactForm';
+import About from './components/About';
+import Locations from './components/Locations';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import StickyCTA from './components/StickyCTA';
 import ScrollToTopButton from './components/ScrollToTopButton';
-import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
+import { LanguageProvider } from './context/LanguageContext.jsx';
 import { initializeAnalytics } from './utils/analytics';
-import Header from './components/Header';
 
 function AppContent() {
-  const { content, isRTL } = useLanguage();
-  
-  // Initialize analytics when component mounts
-  useEffect(() => {
-    const cleanup = initializeAnalytics();
-    return cleanup;
-  }, []);
+  useEffect(() => initializeAnalytics(), []);
 
-  
   return (
-    <div className={`App ${isRTL ? 'rtl' : 'ltr'}`}>
+    <>
       <Header />
-      <main id="main" className="safe-bottom pt-20 sm:pt-24">
-        <Hero 
-          title={content.hero.title}
-          subtitle={content.hero.subtitle}
-          imageUrl={content.hero.imageUrl}
-        />
-        <About 
-          bio={content.about.bio}
-          credentials={content.about.credentials}
-        />
-        <Services services={content.services} />
-        <ClinicInfo 
-          address={content.clinicInfo.address}
-          hours={content.clinicInfo.hours}
-          coords={content.clinicInfo.coords}
-        />
-        <ContactForm />
-        <Footer 
-          phone={content.contact.phone}
-          email={content.contact.email}
-          socialLinks={content.contact.socialLinks}
-        />
+      <main id="main" tabIndex={-1} className="outline-none">
+        <Hero />
+        <Procedures />
+        <Consultations />
+        <About />
+        <Locations />
+        <Contact />
       </main>
+      <Footer />
       <ScrollToTopButton />
       <StickyCTA />
-    </div>
+    </>
   );
 }
 
