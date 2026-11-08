@@ -1,110 +1,814 @@
 {
-  "en": {
+  "fa": {
+    "brand": {
+      "short": "داکتر احسان جبران",
+      "full": "داکتر محمد احسان وردک"
+    },
     "hero": {
-      "title": "Dr. Mohammad Ehsan Wardak",
-      "subtitle": "35+ Years of Trusted Care",
-      "imageUrl": "images/doctorEhsanPhoto-a.jpeg"
+      "title": "داکتر محمد احسان وردک",
+      "specialty": "جراح ارتوپیدی و جراح عمومی در کابل",
+      "since": "جراح از اواخر دههٔ ۱۹۸۰، عملیات در شفاخانهٔ مولا علی",
+      "imageUrl": "images/doctorEhsanPhoto-a.jpeg",
+      "imageAlt": "تصویر داکتر محمد احسان وردک"
     },
-    "about": {
-      "bio": "Dr. Mohammad Ehsan Wardak is a highly experienced physician with over 35 years of dedicated service in healthcare. Based in Kabul, Afghanistan, Dr. Wardak has built a reputation for providing compassionate, comprehensive medical care to patients of all ages.",
-      "credentials": [
-        "Medical Degree from Kabul University",
-        "35+ Years of Clinical Experience",
-        "Specialized in General Medicine",
-        "Member of Afghan Medical Association",
-        "Fluent in English, Farsi, and Pashto"
-      ],
-      "philosophy": "I believe in treating each patient as a whole person, not just their symptoms. My approach combines modern medical practices with compassionate care, ensuring every patient receives personalized attention and the highest quality treatment."
-    },
-    "services": [
+    "regions": [
       {
-        "name": "General Consultation",
-        "description": "Comprehensive health assessments and personalized treatment plans for all age groups."
+        "id": "neck",
+        "label": "گردن"
       },
       {
-        "name": "Preventive Care",
-        "description": "Regular check-ups, vaccinations, and health screenings to maintain optimal wellness."
+        "id": "chest",
+        "label": "سینه"
       },
       {
-        "name": "Chronic Disease Management",
-        "description": "Ongoing care and monitoring for conditions like diabetes, hypertension, and heart disease."
+        "id": "abdomen",
+        "label": "شکم"
       },
       {
-        "name": "Emergency Care",
-        "description": "Immediate medical attention for urgent health concerns and acute conditions."
+        "id": "groin",
+        "label": "کشالهٔ ران"
+      },
+      {
+        "id": "arms",
+        "label": "دست و بازو"
+      },
+      {
+        "id": "legs",
+        "label": "لگن و پا"
+      },
+      {
+        "id": "feet",
+        "label": "پنجهٔ پا"
+      },
+      {
+        "id": "skin",
+        "label": "پوست و نسج نرم"
       }
     ],
-    "clinicInfo": {
-      "address": "Family Street, Chahrahi Qambar, Kabul",
-      "hours": [
-        "Everyday: 5:30 PM - 8:00 PM"
-      ],
-      "coords": {
-        "lat": 34.53376621853714,
-        "lng": 69.0844923124286
+    "procedures": [
+      {
+        "id": "orif",
+        "name": "تثبیت شکستگی با پلیت و پیچ",
+        "plain": "عملیات برای ثابت نگه‌داشتن استخوان شکسته تا زمان التیام.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "nailing",
+        "name": "میله‌گذاری داخل استخوان",
+        "plain": "گذاشتن میلهٔ فلزی داخل استخوان ران یا ساق برای ترمیم شکستگی.",
+        "specialty": "orthopedic",
+        "regions": [
+          "legs"
+        ]
+      },
+      {
+        "id": "hip-fracture",
+        "name": "عملیات شکستگی مفصل ران",
+        "plain": "تثبیت یا تعویض بخشی از مفصل ران شکسته، که در افراد مسن بعد از افتادن شایع است.",
+        "specialty": "orthopedic",
+        "regions": [
+          "legs"
+        ]
+      },
+      {
+        "id": "external-fixation",
+        "name": "تثبیت خارجی",
+        "plain": "چوکاتی بیرون از دست یا پا برای نگه‌داشتن شکستگی‌های شدید یا باز.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "closed-reduction",
+        "name": "جا اندازی بسته و گچ گرفتن",
+        "plain": "جا انداختن استخوان شکسته یا مفصل دررفته بدون برش، و بعد گچ گرفتن.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "debridement",
+        "name": "پاک‌کاری زخم و تداوی عفونت استخوان",
+        "plain": "برداشتن نسج و استخوان آسیب‌دیده یا عفونی تا زخم التیام یابد.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs",
+          "skin"
+        ]
+      },
+      {
+        "id": "amputation",
+        "name": "قطع عضو و ترمیم انتهای عضو",
+        "plain": "به شمول پای دیابتیک، وقتی نجات عضو ممکن نباشد.",
+        "specialty": "orthopedic",
+        "regions": [
+          "legs",
+          "feet"
+        ]
+      },
+      {
+        "id": "tendon",
+        "name": "ترمیم وتر و رباط",
+        "plain": "ترمیم وترهای بریده یا پاره در دست، بازو یا پشت پا (وتر آشیل).",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "feet"
+        ]
+      },
+      {
+        "id": "clubfoot",
+        "name": "اصلاح پای چنبری",
+        "plain": "تداوی برای راست‌کردن پای کودک که به داخل چرخیده است.",
+        "specialty": "orthopedic",
+        "regions": [
+          "feet"
+        ]
+      },
+      {
+        "id": "bone-lesion",
+        "name": "برداشتن کیست و تومور استخوان و پلیت‌های قدیمی",
+        "plain": "برداشتن کیست یا رشد غیرعادی در استخوان، یا پلیت و پیچ‌های قدیمی.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "appendectomy",
+        "name": "عملیات اپاندیسیت",
+        "plain": "برداشتن اپاندیس ملتهب (درد در پایین سمت راست شکم).",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "hernia",
+        "name": "عملیات فتق",
+        "plain": "ترمیم برآمدگی در کشالهٔ ران، ناف یا محل عملیات قبلی.",
+        "specialty": "general",
+        "regions": [
+          "abdomen",
+          "groin"
+        ]
+      },
+      {
+        "id": "cholecystectomy",
+        "name": "برداشتن کیسهٔ صفرا",
+        "plain": "برای سنگ صفرا که بعد از غذا درد ایجاد می‌کند.",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "hydatid",
+        "name": "عملیات کیست هایداتید",
+        "plain": "برداشتن کیست هایداتید (اکینوکوکوس) از جگر یا شش.",
+        "specialty": "general",
+        "regions": [
+          "abdomen",
+          "chest"
+        ]
+      },
+      {
+        "id": "thyroid",
+        "name": "عملیات تیروئید (گواتر)",
+        "plain": "برداشتن بخشی یا تمام غدهٔ تیروئید بزرگ‌شده در گردن.",
+        "specialty": "general",
+        "regions": [
+          "neck"
+        ]
+      },
+      {
+        "id": "laparotomy",
+        "name": "عملیات عاجل شکم",
+        "plain": "برای زخم سوراخ‌شدهٔ معده، انسداد روده یا جراحت شکم.",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "volvulus",
+        "name": "عملیات پیچ‌خوردگی روده (ولولوس)",
+        "plain": "برای روده‌ای که پیچ خورده و شکم را پُف‌کرده و دردناک می‌سازد.",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "anorectal",
+        "name": "عملیات بواسیر، فیشر و فیستول",
+        "plain": "تداوی بواسیر، شقاق دردناک و فیستول در اطراف مقعد.",
+        "specialty": "general",
+        "regions": [
+          "skin"
+        ]
+      },
+      {
+        "id": "pilonidal",
+        "name": "عملیات سینوس پایلونیدال",
+        "plain": "برداشتن سینوس عفونی در بالای سرین.",
+        "specialty": "general",
+        "regions": [
+          "skin"
+        ]
+      },
+      {
+        "id": "hydrocele",
+        "name": "عملیات هایدروسیل و واریکوسیل",
+        "plain": "برای پندیدگی در کیسهٔ خصیه.",
+        "specialty": "general",
+        "regions": [
+          "groin"
+        ]
+      },
+      {
+        "id": "breast-mass",
+        "name": "برداشتن غدهٔ پستان و تودهٔ نسج نرم",
+        "plain": "برداشتن توده در پستان یا زیر پوست برای تشخیص.",
+        "specialty": "general",
+        "regions": [
+          "chest",
+          "skin"
+        ]
+      },
+      {
+        "id": "skin-burns",
+        "name": "تخلیهٔ دُمل، تداوی سوختگی و پیوند پوست",
+        "plain": "تخلیهٔ عفونت‌ها و تداوی سوختگی، به شمول پیوند پوست.",
+        "specialty": "general",
+        "regions": [
+          "skin"
+        ]
       }
+    ],
+    "consultations": [
+      {
+        "id": "assessment",
+        "name": "معاینهٔ جراحی و نظر دوم",
+        "plain": "اکسری‌ها و راپورهای خود را بیاورید. داکتر به شما می‌گوید که آیا به عملیات ضرورت دارید یا نه."
+      },
+      {
+        "id": "pre-op",
+        "name": "آمادگی پیش از عملیات",
+        "plain": "کدام آزمایش‌ها لازم است، چه انتظار داشته باشید و چگونه آماده شوید."
+      },
+      {
+        "id": "post-op",
+        "name": "مراقبت بعد از عملیات",
+        "plain": "معاینه، تبدیل پانسمان و کشیدن بخیه یا گچ بعد از عملیات."
+      }
+    ],
+    "about": {
+      "bio": "داکتر محمد احسان وردک بیش از ۳۵ سال است که در کابل به حیث جراح کار می‌کند. او جراحت‌ها و امراض استخوان و مفاصل (ارتوپیدی) و امراض شکم و نسج نرم (جراحی عمومی) را تداوی می‌کند. داکتر در کلینیک خود بیماران را معاینه می‌کند و در شفاخانهٔ مولا علی عملیات انجام می‌دهد.",
+      "credentials": [
+        "سند طب از پوهنتون کابل",
+        "جراح از اواخر دههٔ ۱۹۸۰",
+        "جراحی ارتوپیدی و جراحی عمومی",
+        "عضو انجمن طبی افغانستان",
+        "به زبان‌های دری، پشتو و انگلیسی صحبت می‌کند"
+      ],
+      "highlights": [
+        {
+          "title": "استخوان و شکم، یک جراح",
+          "text": "از شکستگی مفصل ران تا سنگ صفرا، داکتر خودش معاینه، عملیات و پیگیری می‌کند."
+        },
+        {
+          "title": "تجربه با امراض رایج در افغانستان",
+          "text": "کیست هایداتید، گواتر، جراحت‌های ترافیکی و جنگی: امراض رایج افغانستان کار روزمرهٔ اوست."
+        },
+        {
+          "title": "همان داکتر، قبل و بعد از عملیات",
+          "text": "معاینه در کلینیک، عملیات و مراقبت بعد از آن همه نزد خود داکتر است."
+        }
+      ]
     },
+    "locations": [
+      {
+        "type": "clinic",
+        "name": "کلینیک داکتر احسان جبران",
+        "address": "سرک فامیلی‌ها، چهارراهی قمبر، کابل",
+        "coords": {
+          "lat": 34.53376621853714,
+          "lng": 69.0844923124286
+        },
+        "note": "معاینه و مراجعه‌های بعدی"
+      },
+      {
+        "type": "hospital",
+        "name": "شفاخانهٔ مولا علی",
+        "note": "عملیات‌ها در این‌جا انجام می‌شود."
+      }
+    ],
+    "hours": {
+      "open": "17:30",
+      "close": "20:00",
+      "days": "daily",
+      "tz": "Asia/Kabul"
+    },
+    "whatToBring": [
+      "هر نوع اکسری، التراسوند یا سی‌تی‌اسکن",
+      "راپورهای داکتران قبلی و نتایج آزمایش‌ها",
+      "فهرست دواهایی که استفاده می‌کنید"
+    ],
     "contact": {
-      "phone": "+93 78 915 8627",
+      "phone": "+93789158627",
+      "phoneDisplay": "+93 78 915 8627",
+      "whatsapp": "93789158627",
       "email": "mohammadehsanjebran@gmail.com",
       "socialLinks": {
         "facebook": "https://www.facebook.com/jebran.mohammadehsan/",
         "instagram": "https://www.instagram.com/jebranmohammad/"
-      }
+      },
+      "whatsappMessage": "سلام داکتر صاحب، می‌خواهم دربارهٔ وقت ملاقات بپرسم.",
+      "whatsappXrayMessage": "سلام داکتر صاحب، عکس اکسری یا راپور خود را می‌فرستم. آیا این را تداوی می‌کنید؟",
+      "abroadNote": "اگر از خارج تماس می‌گیرید، واتساپ ساده‌ترین راه تماس است.",
+      "emergencyNote": "در حالت عاجل، به نزدیک‌ترین بخش عاجل شفاخانه مراجعه کنید."
+    },
+    "ui": {
+      "nav": {
+        "surgery": "عملیات‌ها",
+        "about": "دربارهٔ داکتر",
+        "locations": "کلینیک و شفاخانه",
+        "contact": "تماس"
+      },
+      "menu": "منو",
+      "closeMenu": "بستن منو",
+      "call": "تماس",
+      "whatsapp": "واتساپ",
+      "whatsappLong": "پیام در واتساپ",
+      "langButton": "English",
+      "langButtonLang": "en",
+      "switchLang": "Switch to English",
+      "seeProcedures": "عملیات‌هایی که داکتر انجام می‌دهد را ببینید",
+      "status": {
+        "open": "اکنون باز است تا {time}",
+        "later": "امروز ساعت {time} باز می‌شود",
+        "tomorrow": "فردا ساعت {time} باز می‌شود"
+      },
+      "procedures": {
+        "title": "جراحی‌هایی که داکتر انجام می‌دهد",
+        "intro": "جای مشکل را انتخاب کنید تا عملیات‌های مربوط به آن بخش بدن را ببینید.",
+        "filterLabel": "کجای بدن تان مشکل دارد؟",
+        "all": "همه",
+        "bodyMap": "نقشهٔ بدن",
+        "orthopedic": "ارتوپیدی",
+        "general": "جراحی عمومی",
+        "notSure": "مطمئن نیستید که داکتر مشکل شما را تداوی می‌کند؟",
+        "xrayCta": "عکس اکسری یا راپور خود را بفرستید",
+        "count": "{n} عملیات"
+      },
+      "consultations": {
+        "title": "معاینه در کلینیک",
+        "intro": "هر عملیات با معاینه در کلینیک شروع و ختم می‌شود."
+      },
+      "about": {
+        "title": "دربارهٔ داکتر وردک",
+        "credentials": "تحصیلات و تجربه"
+      },
+      "locations": {
+        "title": "داکتر را کجا پیدا کنید",
+        "everyDay": "هر روز",
+        "directions": "مسیر را ببینید",
+        "copyAddress": "کاپی آدرس",
+        "mapTitle": "نقشهٔ کلینیک داکتر احسان جبران",
+        "mapLoading": "نقشه بارگذاری می‌شود…",
+        "whatToBring": "چه چیزهایی با خود بیاورید",
+        "hours": "ساعات کاری"
+      },
+      "contact": {
+        "title": "تماس",
+        "intro": "برای گرفتن وقت یا پرسیدن دربارهٔ مشکل تان پیام بدهید یا تماس بگیرید.",
+        "copyPhone": "کاپی شماره"
+      },
+      "copied": "کاپی شد",
+      "copyFailed": "کاپی نشد. متن را لمس کرده و نگه دارید تا کاپی شود.",
+      "footer": {
+        "rights": "تمام حقوق محفوظ است.",
+        "followUs": "دنبال کنید"
+      },
+      "scrollTop": "برگشت به بالا",
+      "quickActions": "اقدامات سریع"
     }
   },
-  "fa": {
+  "en": {
+    "brand": {
+      "short": "Dr. Ehsan Jebran",
+      "full": "Dr. Mohammad Ehsan Wardak"
+    },
     "hero": {
-      "title": "دکتر محمد احسان وردک",
-      "subtitle": "بیش از ۳۵ سال مراقبت مورد اعتماد",
-      "imageUrl": "images/doctorEhsanPhoto-a.jpeg"
+      "title": "Dr. Mohammad Ehsan Wardak",
+      "specialty": "Orthopedic & general surgeon, Kabul",
+      "since": "Surgeon since the late 1980s, operating at Mawla Ali Hospital",
+      "imageUrl": "images/doctorEhsanPhoto-a.jpeg",
+      "imageAlt": "Portrait of Dr. Mohammad Ehsan Wardak"
     },
-    "about": {
-      "bio": "دکتر محمد احسان وردک یک پزشک با تجربه بالا با بیش از ۳۵ سال خدمت فداکارانه در مراقبت‌های بهداشتی است. دکتر وردک که در کابل، افغانستان مستقر است، شهرت خود را برای ارائه مراقبت‌های پزشکی دلسوزانه و جامع به بیماران در تمام سنین ایجاد کرده است.",
-      "credentials": [
-        "مدرک پزشکی از دانشگاه کابل",
-        "بیش از ۳۵ سال تجربه بالینی",
-        "تخصص در پزشکی عمومی",
-        "عضو انجمن پزشکی افغانستان",
-        "مسلط به انگلیسی، فارسی و پشتو"
-      ],
-      "philosophy": "من معتقدم که هر بیمار را باید به عنوان یک شخص کامل درمان کرد، نه فقط علائم او. رویکرد من ترکیبی از شیوه‌های پزشکی مدرن با مراقبت دلسوزانه است و اطمینان حاصل می‌کند که هر بیمار توجه شخصی و بالاترین کیفیت درمان را دریافت کند."
-    },
-    "services": [
+    "regions": [
       {
-        "name": "مشاوره عمومی",
-        "description": "ارزیابی‌های بهداشتی جامع و برنامه‌های درمانی شخصی‌سازی شده برای تمام گروه‌های سنی."
+        "id": "neck",
+        "label": "Neck"
       },
       {
-        "name": "مراقبت پیشگیرانه",
-        "description": "معاینات منظم، واکسیناسیون و غربالگری سلامت برای حفظ سلامتی مطلوب."
+        "id": "chest",
+        "label": "Chest"
       },
       {
-        "name": "مدیریت بیماری‌های مزمن",
-        "description": "مراقبت و نظارت مستمر برای شرایطی مانند دیابت، فشار خون بالا و بیماری قلبی."
+        "id": "abdomen",
+        "label": "Belly"
       },
       {
-        "name": "مراقبت اورژانس",
-        "description": "توجه پزشکی فوری برای نگرانی‌های بهداشتی فوری و شرایط حاد."
+        "id": "groin",
+        "label": "Groin"
+      },
+      {
+        "id": "arms",
+        "label": "Arms & hands"
+      },
+      {
+        "id": "legs",
+        "label": "Hips & legs"
+      },
+      {
+        "id": "feet",
+        "label": "Feet"
+      },
+      {
+        "id": "skin",
+        "label": "Skin & soft tissue"
       }
     ],
-    "clinicInfo": {
-      "address": "سَرَک فامیلی‌ها، چهارراهی قمبر، کابل",
-      "hours": [
-        "هر روز: ۵:۳۰ عصر - ۸:۰۰ شب"
-      ],
-      "coords": {
-        "lat": 34.53376621853714,
-        "lng": 69.0844923124286
+    "procedures": [
+      {
+        "id": "orif",
+        "name": "Fracture fixation with plates and screws",
+        "plain": "Surgery to hold a broken bone in place while it heals.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "nailing",
+        "name": "Intramedullary nailing",
+        "plain": "A metal rod inside the thigh or shin bone to fix a fracture.",
+        "specialty": "orthopedic",
+        "regions": [
+          "legs"
+        ]
+      },
+      {
+        "id": "hip-fracture",
+        "name": "Hip fracture surgery",
+        "plain": "Fixing or partly replacing a broken hip, common after falls in older adults.",
+        "specialty": "orthopedic",
+        "regions": [
+          "legs"
+        ]
+      },
+      {
+        "id": "external-fixation",
+        "name": "External fixation",
+        "plain": "A frame outside the arm or leg to hold severe or open fractures.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "closed-reduction",
+        "name": "Closed reduction and casting",
+        "plain": "Setting a broken bone or dislocated joint without a cut, then a cast.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "debridement",
+        "name": "Wound cleaning and bone infection treatment",
+        "plain": "Removing damaged or infected tissue and bone so wounds can heal.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs",
+          "skin"
+        ]
+      },
+      {
+        "id": "amputation",
+        "name": "Amputation and stump revision",
+        "plain": "Including diabetic foot, when a limb cannot be saved.",
+        "specialty": "orthopedic",
+        "regions": [
+          "legs",
+          "feet"
+        ]
+      },
+      {
+        "id": "tendon",
+        "name": "Tendon and ligament repair",
+        "plain": "Repair of cut or torn tendons in the hand, arm or ankle (Achilles).",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "feet"
+        ]
+      },
+      {
+        "id": "clubfoot",
+        "name": "Clubfoot correction",
+        "plain": "Treatment to straighten a child's foot that turns inward.",
+        "specialty": "orthopedic",
+        "regions": [
+          "feet"
+        ]
+      },
+      {
+        "id": "bone-lesion",
+        "name": "Bone cyst, tumour and implant removal",
+        "plain": "Removing a bone cyst or growth, or old plates and screws.",
+        "specialty": "orthopedic",
+        "regions": [
+          "arms",
+          "legs"
+        ]
+      },
+      {
+        "id": "appendectomy",
+        "name": "Appendectomy",
+        "plain": "Removal of an inflamed appendix (pain in the lower right belly).",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "hernia",
+        "name": "Hernia repair",
+        "plain": "Repair of a bulge in the groin, at the navel or in an old surgical scar.",
+        "specialty": "general",
+        "regions": [
+          "abdomen",
+          "groin"
+        ]
+      },
+      {
+        "id": "cholecystectomy",
+        "name": "Gallbladder removal",
+        "plain": "For gallstones that cause pain after meals.",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "hydatid",
+        "name": "Hydatid cyst surgery",
+        "plain": "Removing hydatid (echinococcus) cysts from the liver or lung.",
+        "specialty": "general",
+        "regions": [
+          "abdomen",
+          "chest"
+        ]
+      },
+      {
+        "id": "thyroid",
+        "name": "Thyroid surgery for goiter",
+        "plain": "Removing part or all of an enlarged thyroid in the neck.",
+        "specialty": "general",
+        "regions": [
+          "neck"
+        ]
+      },
+      {
+        "id": "laparotomy",
+        "name": "Emergency abdominal surgery",
+        "plain": "For a perforated ulcer, blocked bowel or abdominal injury.",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "volvulus",
+        "name": "Sigmoid volvulus surgery",
+        "plain": "For a twisted bowel that causes a swollen, painful belly.",
+        "specialty": "general",
+        "regions": [
+          "abdomen"
+        ]
+      },
+      {
+        "id": "anorectal",
+        "name": "Hemorrhoid, fissure and fistula surgery",
+        "plain": "Treatment for piles, painful tears and fistulas near the anus.",
+        "specialty": "general",
+        "regions": [
+          "skin"
+        ]
+      },
+      {
+        "id": "pilonidal",
+        "name": "Pilonidal sinus surgery",
+        "plain": "Removing an infected sinus at the top of the buttocks.",
+        "specialty": "general",
+        "regions": [
+          "skin"
+        ]
+      },
+      {
+        "id": "hydrocele",
+        "name": "Hydrocele and varicocele repair",
+        "plain": "For swelling in the scrotum.",
+        "specialty": "general",
+        "regions": [
+          "groin"
+        ]
+      },
+      {
+        "id": "breast-mass",
+        "name": "Breast lump and soft-tissue mass removal",
+        "plain": "Removing lumps in the breast or under the skin for diagnosis.",
+        "specialty": "general",
+        "regions": [
+          "chest",
+          "skin"
+        ]
+      },
+      {
+        "id": "skin-burns",
+        "name": "Abscess drainage, burns and skin grafts",
+        "plain": "Draining infections and treating burns, including skin grafting.",
+        "specialty": "general",
+        "regions": [
+          "skin"
+        ]
       }
+    ],
+    "consultations": [
+      {
+        "id": "assessment",
+        "name": "Surgical assessment and second opinion",
+        "plain": "Bring your X-rays and reports. He will tell you whether you need an operation."
+      },
+      {
+        "id": "pre-op",
+        "name": "Planning before surgery",
+        "plain": "Which tests you need, what to expect and how to prepare."
+      },
+      {
+        "id": "post-op",
+        "name": "Follow-up and wound care",
+        "plain": "Check-ups, dressing changes and removal of stitches or casts after your operation."
+      }
+    ],
+    "about": {
+      "bio": "For more than 35 years, Dr. Mohammad Ehsan Wardak has worked as a surgeon in Kabul. He treats injuries and diseases of bones and joints (orthopedics) and of the abdomen and soft tissue (general surgery). He sees patients at his own clinic and operates at Mawla Ali Hospital.",
+      "credentials": [
+        "Medical degree, Kabul University",
+        "Practising surgery since the late 1980s",
+        "Orthopedic surgery and general surgery",
+        "Member of the Afghan Medical Association",
+        "Speaks Dari, Pashto and English"
+      ],
+      "highlights": [
+        {
+          "title": "Bones and abdomen, one surgeon",
+          "text": "From a broken hip to gallstones, he examines you, operates and follows up himself."
+        },
+        {
+          "title": "Experience with local conditions",
+          "text": "Hydatid cysts, goiter, road and war injuries: the conditions common in Afghanistan are his daily work."
+        },
+        {
+          "title": "The same doctor before and after",
+          "text": "Your clinic visits, your operation and your follow-up are all with him."
+        }
+      ]
     },
+    "locations": [
+      {
+        "type": "clinic",
+        "name": "Dr. Ehsan Jebran's clinic",
+        "address": "Family Street, Chahrahi Qambar, Kabul",
+        "coords": {
+          "lat": 34.53376621853714,
+          "lng": 69.0844923124286
+        },
+        "note": "Consultations and follow-up visits"
+      },
+      {
+        "type": "hospital",
+        "name": "Mawla Ali Hospital",
+        "note": "Operations are performed here."
+      }
+    ],
+    "hours": {
+      "open": "17:30",
+      "close": "20:00",
+      "days": "daily",
+      "tz": "Asia/Kabul"
+    },
+    "whatToBring": [
+      "Any X-rays, ultrasound or CT scans",
+      "Earlier doctors' reports and test results",
+      "A list of the medicines you take"
+    ],
     "contact": {
-      "phone": "+93 78 915 8627",
+      "phone": "+93789158627",
+      "phoneDisplay": "+93 78 915 8627",
+      "whatsapp": "93789158627",
       "email": "mohammadehsanjebran@gmail.com",
       "socialLinks": {
         "facebook": "https://www.facebook.com/jebran.mohammadehsan/",
         "instagram": "https://www.instagram.com/jebranmohammad/"
-      }
+      },
+      "whatsappMessage": "Salaam Dr. Sahib, I would like to ask about an appointment.",
+      "whatsappXrayMessage": "Salaam Dr. Sahib, I am sending a photo of my X-ray or report. Can you treat this?",
+      "abroadNote": "Calling from abroad? WhatsApp is the easiest way to reach us.",
+      "emergencyNote": "For a medical emergency, go to the nearest hospital emergency department."
+    },
+    "ui": {
+      "nav": {
+        "surgery": "Operations",
+        "about": "About",
+        "locations": "Clinic & hospital",
+        "contact": "Contact"
+      },
+      "menu": "Menu",
+      "closeMenu": "Close menu",
+      "call": "Call",
+      "whatsapp": "WhatsApp",
+      "whatsappLong": "Message on WhatsApp",
+      "langButton": "دری",
+      "langButtonLang": "fa",
+      "switchLang": "تغییر به دری",
+      "seeProcedures": "See which operations he performs",
+      "status": {
+        "open": "Open now until {time}",
+        "later": "Opens today at {time}",
+        "tomorrow": "Opens tomorrow at {time}"
+      },
+      "procedures": {
+        "title": "Operations he performs",
+        "intro": "Choose where the problem is to see the operations for that part of the body.",
+        "filterLabel": "Where does it hurt?",
+        "all": "All",
+        "bodyMap": "Body map",
+        "orthopedic": "Orthopedic",
+        "general": "General surgery",
+        "notSure": "Not sure if he treats your problem?",
+        "xrayCta": "Send a photo of your X-ray or report",
+        "count": "{n} operations"
+      },
+      "consultations": {
+        "title": "Clinic visits",
+        "intro": "Every operation starts and ends with a visit to his clinic."
+      },
+      "about": {
+        "title": "About Dr. Wardak",
+        "credentials": "Training and experience"
+      },
+      "locations": {
+        "title": "Where to find him",
+        "everyDay": "Every day",
+        "directions": "Get directions",
+        "copyAddress": "Copy address",
+        "mapTitle": "Map of Dr. Ehsan Jebran's clinic",
+        "mapLoading": "Loading map…",
+        "whatToBring": "What to bring",
+        "hours": "Opening hours"
+      },
+      "contact": {
+        "title": "Contact",
+        "intro": "Message or call to book a visit or ask whether he can treat your problem.",
+        "copyPhone": "Copy number"
+      },
+      "copied": "Copied",
+      "copyFailed": "Couldn't copy. Press and hold the text to copy it.",
+      "footer": {
+        "rights": "All rights reserved.",
+        "followUs": "Follow"
+      },
+      "scrollTop": "Back to top",
+      "quickActions": "Quick actions"
     }
   }
 }

@@ -1,8 +1,21 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react';
 import siteContent from '../data/siteContent.json';
 
-const LanguageContext = createContext();
+const LanguageContext = createContext(null);
 const LANGUAGE_STORAGE_KEY = 'doctor_website_language';
+const LANGUAGES = ['fa', 'en'];
+const DEFAULT_LANGUAGE = 'fa';
+const HTML_LANG = { fa: 'fa-AF', en: 'en' };
+
+const readStoredLanguage = () => {
+  if (typeof window === 'undefined') return DEFAULT_LANGUAGE;
+  try {
+    const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    return LANGUAGES.includes(stored) ? stored : DEFAULT_LANGUAGE;
+  } catch (e) {
+    return DEFAULT_LANGUAGE;
+  }
+};
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
@@ -13,37 +26,35 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] = useState(() => {
-    if (typeof window === 'undefined') {
-      return 'en';
-    }
-    const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    return stored === 'fa' ? 'fa' : 'en';
-  });
-  
-  const toggleLanguage = () => {
-    setCurrentLanguage(prev => prev === 'en' ? 'fa' : 'en');
+  const [lang, setLangState] = useState(readStoredLanguage);
+  const isRTL = lang === 'fa';
+
+  const setLang = (next) => {
+    if (LANGUAGES.includes(next)) setLangState(next);
   };
+  const toggleLanguage = () => setLangState((prev) => (prev === 'fa' ? 'en' : 'fa'));
+
+  useLayoutEffect(() => {
+    document.documentElement.lang = HTML_LANG[lang];
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+  }, [lang, isRTL]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
+    try {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch (e) {
+      // storage unavailable (private mode); language still works for this visit
     }
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
-  }, [currentLanguage]);
-  
-  const content = siteContent[currentLanguage];
-  
+  }, [lang]);
+
   const value = {
-    currentLanguage,
+    lang,
+    currentLanguage: lang,
+    isRTL,
+    content: siteContent[lang],
+    setLang,
     toggleLanguage,
-    content,
-    isRTL: currentLanguage === 'fa'
   };
-  
-  return (
-    <LanguageContext.Provider value={value}>
-      {children}
-    </LanguageContext.Provider>
-  );
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };

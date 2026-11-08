@@ -22,13 +22,6 @@ function AppContent() {
     return cleanup;
   }, []);
 
-  // Keep document direction in sync with current language for proper RTL support
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-      document.documentElement.lang = isRTL ? 'fa' : 'en';
-    }
-  }, [isRTL]);
   
   return (
     <div className={`App ${isRTL ? 'rtl' : 'ltr'}`}>
