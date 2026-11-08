@@ -404,6 +404,11 @@
       },
       "scrollTop": "برگشت به بالا",
       "quickActions": "اقدامات سریع"
+    },
+    "seo": {
+      "title": "داکتر احسان جبران | جراح ارتوپیدی و عمومی در کابل",
+      "description": "جراح ارتوپیدی و جراح عمومی در کابل از اواخر دههٔ ۱۹۸۰: شکستگی، فتق، کیسهٔ صفرا، کیست هایداتید، تیروئید و بیشتر. کلینیک در چهارراهی قمبر.",
+      "ogImageAlt": "داکتر احسان جبران، جراح ارتوپیدی و عمومی در کابل"
     }
   },
   "en": {
@@ -811,6 +816,11 @@
       },
       "scrollTop": "Back to top",
       "quickActions": "Quick actions"
+    },
+    "seo": {
+      "title": "Dr. Ehsan Jebran | Orthopedic & General Surgeon, Kabul",
+      "description": "Orthopedic and general surgeon in Kabul since the late 1980s: fractures, hernia, gallbladder, hydatid cysts, thyroid and more. Clinic in Chahrahi Qambar.",
+      "ogImageAlt": "Dr. Ehsan Jebran, orthopedic and general surgeon in Kabul"
     }
   }
 }

@@ -33,9 +33,9 @@ function AppContent() {
   );
 }
 
-function App() {
+function App({ initialLang }) {
   return (
-    <LanguageProvider>
+    <LanguageProvider initialLang={initialLang}>
       <AppContent />
     </LanguageProvider>
   );

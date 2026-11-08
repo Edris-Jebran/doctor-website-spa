@@ -68,7 +68,7 @@ const Footer = () => {
       </div>
       <div className="border-t border-white/15 safe-bottom">
         <div className="container-page flex flex-col gap-3 py-5 text-sm text-white/80 md:pe-20 sm:flex-row sm:items-center sm:justify-between">
-          <p>
+          <p suppressHydrationWarning>
             © {year} {brand.short}. {ui.footer.rights}
           </p>
           <a

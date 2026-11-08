@@ -5,9 +5,11 @@ import { getOpenStatus, formatTime } from '../utils/clinicHours';
 import { telHref, whatsappHref } from '../utils/contactLinks';
 import Icon from './Icon';
 
+// null until mounted, so build-time HTML never contains a stale "open now".
 const useNow = (intervalMs = 60000) => {
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState(null);
   useEffect(() => {
+    setNow(new Date());
     const id = setInterval(() => setNow(new Date()), intervalMs);
     return () => clearInterval(id);
   }, [intervalMs]);
@@ -18,9 +20,10 @@ const Hero = () => {
   const { lang, content } = useLanguage();
   const { hero, ui, contact, hours } = content;
   const now = useNow();
-  const status = getOpenStatus(now, hours);
-  const time = formatTime(status.state === 'open' ? status.close : status.open, lang);
-  const statusText = ui.status[status.state].replace('{time}', time);
+  const status = now ? getOpenStatus(now, hours) : null;
+  const statusText = status
+    ? ui.status[status.state].replace('{time}', formatTime(status.state === 'open' ? status.close : status.open, lang))
+    : '\u00a0';
   const src = `${process.env.PUBLIC_URL}/${hero.imageUrl}`;
 
   return (
@@ -34,7 +37,7 @@ const Hero = () => {
           <p className="mt-5 inline-flex items-center gap-2 text-ink">
             <span
               aria-hidden="true"
-              className={`h-2.5 w-2.5 rounded-full ${status.state === 'open' ? 'bg-primary' : 'bg-steel'}`}
+              className={`h-2.5 w-2.5 rounded-full ${status?.state === 'open' ? 'bg-primary' : 'bg-steel'} ${status ? '' : 'invisible'}`}
             />
             <span>{statusText}</span>
           </p>

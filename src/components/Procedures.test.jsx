@@ -15,13 +15,14 @@ const renderEn = () =>
     </LanguageProvider>
   );
 
-const list = () => screen.getByRole('list', { name: 'Operations he performs' });
-const names = () => within(list()).getAllByRole('listitem').map((li) => li.textContent);
+const section = () => screen.getByRole('region', { name: 'Operations he performs' });
+const items = () => within(section()).queryAllByRole('listitem');
+const names = () => items().map((li) => li.textContent);
 const chips = () => screen.getByRole('group', { name: 'Where does it hurt?' });
 
 test('shows all 22 operations at first', () => {
   renderEn();
-  expect(within(list()).getAllByRole('listitem')).toHaveLength(22);
+  expect(items()).toHaveLength(22);
 });
 
 test('Groin filter shows groin operations only', () => {
@@ -40,7 +41,7 @@ test('choosing the active region again shows everything', () => {
   const groin = within(chips()).getByRole('button', { name: 'Groin' });
   userEvent.click(groin);
   userEvent.click(groin);
-  expect(within(list()).getAllByRole('listitem')).toHaveLength(22);
+  expect(items()).toHaveLength(22);
   expect(within(chips()).getByRole('button', { name: 'All' })).toHaveAttribute('aria-pressed', 'true');
 });
 
@@ -63,4 +64,19 @@ test('X-ray call to action opens WhatsApp', () => {
   renderEn();
   const cta = screen.getByRole('link', { name: /Send a photo of your X-ray or report/ });
   expect(cta.getAttribute('href')).toMatch(/^https:\/\/wa\.me\//);
+});
+
+test('operations are grouped under Orthopedic and General surgery', () => {
+  renderEn();
+  const ortho = screen.getByRole('list', { name: 'Orthopedic' });
+  const general = screen.getByRole('list', { name: 'General surgery' });
+  expect(within(ortho).getAllByRole('listitem')).toHaveLength(10);
+  expect(within(general).getAllByRole('listitem')).toHaveLength(12);
+});
+
+test('a group with no matching operations is hidden', () => {
+  renderEn();
+  userEvent.click(within(chips()).getByRole('button', { name: 'Neck' }));
+  expect(screen.queryByRole('list', { name: 'Orthopedic' })).not.toBeInTheDocument();
+  expect(screen.getByRole('list', { name: 'General surgery' })).toBeInTheDocument();
 });

@@ -46,7 +46,7 @@ const Procedures = () => {
         <p className="mt-3 max-w-measure text-steel">{t.intro}</p>
 
         <div className="mt-8 grid gap-8 md:grid-cols-[200px_1fr] md:gap-12">
-          <div className="hidden md:block">
+          <div className="hidden md:block md:sticky md:top-24 md:self-start">
             <BodyMap regions={regions} active={active} onSelect={select} label={t.bodyMap} />
           </div>
 
@@ -62,17 +62,25 @@ const Procedures = () => {
             <p className="mt-6 text-sm text-steel" aria-live="polite">
               {count}
             </p>
-            <ul aria-labelledby="surgery-title" className="mt-2 divide-y divide-primary/10 border-y border-primary/10">
-              {shown.map((p) => (
-                <li key={p.id} className="py-4">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <span className="font-medium text-ink">{p.name}</span>
-                    <span className="text-sm text-steel">{t[p.specialty]}</span>
-                  </div>
-                  <p className="mt-1 max-w-measure text-steel">{p.plain}</p>
-                </li>
-              ))}
-            </ul>
+            {['orthopedic', 'general'].map((specialty) => {
+              const group = shown.filter((p) => p.specialty === specialty);
+              if (group.length === 0) return null;
+              return (
+                <div key={specialty} className="mt-6 first:mt-2">
+                  <h4 id={`group-${specialty}`} className="text-base font-semibold text-primary">
+                    {t[specialty]}
+                  </h4>
+                  <ul aria-labelledby={`group-${specialty}`} className="mt-2 divide-y divide-primary/10 border-y border-primary/10">
+                    {group.map((p) => (
+                      <li key={p.id} className="py-3.5">
+                        <span className="font-medium text-ink">{p.name}</span>
+                        <p className="mt-0.5 max-w-measure text-steel">{p.plain}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <p className="text-ink">{t.notSure}</p>

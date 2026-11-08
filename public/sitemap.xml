@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://drjebran.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="fa-AF" href="https://drjebran.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://drjebran.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://drjebran.com/" />
   </url>
   <url>
-    <loc>https://drjebran.com/#about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://drjebran.com/#services</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://drjebran.com/#clinic-info</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://drjebran.com/#contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://drjebran.com/en/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="fa-AF" href="https://drjebran.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://drjebran.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://drjebran.com/" />
   </url>
 </urlset>

@@ -20,7 +20,9 @@ test('shows the Dari brand by default', () => {
 
 test('language button switches to English', () => {
   renderHeader();
-  const toggles = screen.getAllByRole('button', { name: 'Switch to English' });
+  const toggles = screen.getAllByRole('link', { name: 'Switch to English' });
+  expect(toggles[0]).toHaveAttribute('href', '/en/');
+  expect(toggles[0]).toHaveAttribute('hreflang', 'en');
   userEvent.click(toggles[0]);
   expect(screen.getByRole('link', { name: 'Dr. Ehsan Jebran' })).toBeInTheDocument();
 });

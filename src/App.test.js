@@ -12,7 +12,7 @@ test('renders in Dari by default', () => {
 
 test('switches the whole page to English', () => {
   render(<App />);
-  userEvent.click(screen.getAllByRole('button', { name: 'Switch to English' })[0]);
+  userEvent.click(screen.getAllByRole('link', { name: 'Switch to English' })[0]);
   expect(screen.getByRole('heading', { level: 2, name: 'Operations he performs' })).toBeInTheDocument();
   expect(document.documentElement.dir).toBe('ltr');
 });
